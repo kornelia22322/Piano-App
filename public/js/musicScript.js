@@ -21,9 +21,9 @@
   const context = new AudioContext();
   let yodelBuffer;
 
-  function addEvents(){
+  function addClickEvents(){
     for(let i = 0; i < whites; i++){
-      let stringPattern = "key-white-"+i;      
+      let stringPattern = "key-white-"+i;
       let URL = 'http://localhost:3003/music?id=a'+ mapWhiteKeys[i]+ '.mp3';
       document.getElementById(stringPattern).addEventListener("click", function() {
         getData(URL)});
@@ -42,7 +42,7 @@
       .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
       .then(audioBuffer => {
         yodelBuffer = audioBuffer;
-          play(yodelBuffer);
+        play(yodelBuffer);
       });
   }
 
@@ -53,5 +53,5 @@
     source.start();
   }
 
-  addEvents();
+  addClickEvents();
 }());

@@ -1,10 +1,15 @@
-(function injectDivs() {
-	this.init = function() {
-		addWhiteDivs(36);
-		addBlackDivs(25);
+(function() {
+	const numofWhiteKeys = 36;
+	const numofBlackKeys = 25;
+	const total = numofWhiteKeys + numofBlackKeys;
+
+	function init() {
+		addWhiteDivs(numofWhiteKeys);
+		addBlackDivs(numofBlackKeys);
+		addMouseOverEvent();
 	}
 
-	this.addWhiteDivs = function(numofKeys) {
+	function addWhiteDivs(numofKeys) {
 		var template = '';
 		var left = 0;
 		for(var i = 0; i < numofKeys; i++){
@@ -15,7 +20,7 @@
 		$("#whites").append(template);
 	}
 
-	this.addBlackDivs = function(numofKeys) {
+	function addBlackDivs(numofKeys) {
 		var template = '';
 		var left = 2.0277;
 		for(var i = 0; i < numofKeys; i++) {
@@ -30,5 +35,33 @@
 		$("#black").append(template);
 	}
 
-	this.init();
+	function addMouseOverEvent(){
+		for(let i = 0; i < numofWhiteKeys; i++){
+      let stringPattern = "#key-white-"+i;
+			console.log("Git");
+      $(stringPattern).on("mouseover", function() {
+				console.log("I see you");
+        $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))"});
+    	});
+			$(stringPattern).on("mouseout", function() {
+				console.log("I see you");
+        $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(224,224,224), rgb(224,224,224) 5%, rgb(255,255,255))"});
+    	});
+		}
+
+    for(let i = 0; i < numofBlackKeys; i++){
+			let stringPattern = "#key-black-"+i;
+			console.log("Git");
+      $(stringPattern).on("mouseover", function() {
+				console.log("I see you");
+        $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))"});
+    	});
+			$(stringPattern).on("mouseout", function() {
+				console.log("I see you");
+        $(stringPattern).css({"background" : "rgb(0,0,0)"});
+    	});
+    }
+	}
+
+	init();
 })();
