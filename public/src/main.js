@@ -4,10 +4,13 @@ import {initStyleAdding} from './script.js';
 import {addClickEvents} from './audio.js';
 
 function init() {
-  initStyleAdding();
-  let pianoBuilder = new PianoBuilder();
-  const piano = pianoBuilder.build();
-  addClickEvents(piano);
+    initStyleAdding();
+
+    //Builder design pattern
+    let pianoBuilder = new PianoBuilder();
+    const piano = pianoBuilder.build();
+    
+    addClickEvents(piano);
 }
 
 init();

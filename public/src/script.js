@@ -35,28 +35,22 @@ function addBlackDivs(numofKeys) {
 
 function addMouseOverEvent(numofWhiteKeys, numofBlackKeys){
 	for(let i = 0; i < numofWhiteKeys; i++){
-    let stringPattern = "#key-white-"+i;
-		console.log("Git");
-    $(stringPattern).on("mouseover", function() {
-			console.log("I see you");
-      $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))"});
-  	});
+    	let stringPattern = "#key-white-"+i;
+    	$(stringPattern).on("mouseover", function() {
+      		$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))"});
+  		});
 		$(stringPattern).on("mouseout", function() {
-			console.log("I see you");
-      $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(224,224,224), rgb(224,224,224) 5%, rgb(255,255,255))"});
-  	});
+      		$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(224,224,224), rgb(224,224,224) 5%, rgb(255,255,255))"});
+  		});
 	}
 
   for(let i = 0; i < numofBlackKeys; i++){
 		let stringPattern = "#key-black-"+i;
-		console.log("Git");
-    $(stringPattern).on("mouseover", function() {
-			console.log("I see you");
-      $(stringPattern).css({"background" : "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))"});
-  	});
+    	$(stringPattern).on("mouseover", function() {
+			$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))"});
+  		});
 		$(stringPattern).on("mouseout", function() {
-			console.log("I see you");
-      $(stringPattern).css({"background" : "rgb(0,0,0)"});
-  	});
+      		$(stringPattern).css({"background" : "rgb(0,0,0)"});
+  		});
 	}
 }
