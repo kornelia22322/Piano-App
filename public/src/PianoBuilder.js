@@ -19,10 +19,10 @@ export default class PianoBuilder {
                             20:65, 21:67,
                             22:70, 23:72, 24:74 };
 
-    this.whites = Object.keys(this.mapWhiteKeys).length;
-    this.blacks = Object.keys(this.mapBlackKeys).length;
-    this.piano = null;
-  };
+        this.whites = Object.keys(this.mapWhiteKeys).length;
+        this.blacks = Object.keys(this.mapBlackKeys).length;
+        this.piano = null;
+    };
 
     step1() {
         this.piano = new Piano(this.whites, this.blacks);

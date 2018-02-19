@@ -34,7 +34,7 @@ function addBlackDivs(numofKeys) {
 }
 
 function addMouseOverEvent(numofWhiteKeys, numofBlackKeys){
-	for(let i = 0; i < numofWhiteKeys; i++){
+	for(let i = 0; i < numofWhiteKeys; i++) {
     	let stringPattern = "#key-white-"+i;
     	$(stringPattern).on("mouseover", function() {
       		$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))"});
@@ -44,7 +44,7 @@ function addMouseOverEvent(numofWhiteKeys, numofBlackKeys){
   		});
 	}
 
-	for(let i = 0; i < numofBlackKeys; i++){
+	for(let i = 0; i < numofBlackKeys; i++) {
 		let stringPattern = "#key-black-"+i;
     	$(stringPattern).on("mouseover", function() {
 			$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))"});
