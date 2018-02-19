@@ -44,7 +44,7 @@ function addMouseOverEvent(numofWhiteKeys, numofBlackKeys){
   		});
 	}
 
-  for(let i = 0; i < numofBlackKeys; i++){
+	for(let i = 0; i < numofBlackKeys; i++){
 		let stringPattern = "#key-black-"+i;
     	$(stringPattern).on("mouseover", function() {
 			$(stringPattern).css({"background" : "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))"});
