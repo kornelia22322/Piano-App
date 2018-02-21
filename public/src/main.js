@@ -2,7 +2,7 @@ import PianoBuilder from './PianoBuilder.js';
 import {initStyleAdding, changeWhiteKeyColor, changeBlackKeyColor,
         getBackBlackKeyColor, getBackWhiteKeyColor} from './script.js';
 import {context, addClickEvents, getData} from './audio.js';
-import {silentNight, hallelujah} from './Data.js';
+import {silentNight, hallelujah, titanic} from './Data.js';
 import {translateSong} from './translator.js';
 import {injectSong} from './injectSong.js';
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
 });
 
 function initprogress(){
-    let song = hallelujah;
+    let song = titanic;
     console.log(song);
     let output = translateSong(song);
     console.log(output);

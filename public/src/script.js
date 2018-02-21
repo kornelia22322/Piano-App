@@ -11,7 +11,7 @@ function addDivs(pianoBuilder) {
 	let templateforWhite = '';
 	let templateforBlack = '';
 	let templateforWhiteSpan = '';
-	
+
 	let leftforWhite = 0;
 	let leftforBlack = 2.02777;
 	let iteratorforBlack = 0;
@@ -54,6 +54,7 @@ function addMouseOverEvent(piano){
 		} else if(piano.keyArray[i] != undefined && !piano.keyArray[i].isWhite) {
 			$(piano.keyArray[i].stringPattern).on({
 				"mouseover": function() {
+					console.log(piano.keyArray[i].stringPattern);
 		      		changeBlackKeyColor(piano.keyArray[i].stringPattern);
 	  			},
 				"mouseout" : function() {

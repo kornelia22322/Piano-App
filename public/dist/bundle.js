@@ -228,7 +228,7 @@ $(document).ready(function () {
 });
 
 function initprogress() {
-    var song = _Data.hallelujah;
+    var song = _Data.titanic;
     console.log(song);
     var output = (0, _translator.translateSong)(song);
     console.log(output);
@@ -358,6 +358,7 @@ function addMouseOverEvent(piano) {
 		} else if (piano.keyArray[i] != undefined && !piano.keyArray[i].isWhite) {
 			$(piano.keyArray[i].stringPattern).on({
 				"mouseover": function mouseover() {
+					console.log(piano.keyArray[i].stringPattern);
 					changeBlackKeyColor(piano.keyArray[i].stringPattern);
 				},
 				"mouseout": function mouseout() {
@@ -448,6 +449,8 @@ var silentNight = exports.silentNight = [55, 74, 55, 72, 55, 74, 55, 72, 56, 56,
 
 var hallelujah = exports.hallelujah = [72, 55, 55, 55, 55, 74, 74, 74, 72, 55, 55, 55, 55, 55, 74, 74, 74, 74, 74, 74, 74, 74, 74];
 
+var titanic = exports.titanic = [79, 190, 190, 186, 80, 186, 190, 79, 190, 189, 80, 186, 79, 73, 188];
+
 /***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -468,9 +471,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var KeysTranslator = (_KeysTranslator = { 17: 16, 20: 18, 27: 20, 49: 21, 65: 23, 18: 25, 88: 27,
     87: 28, 51: 30, 68: 32, 67: 33, 86: 35, 82: 37, 53: 39,
     84: "t", 66: "b", 72: "h", 89: "y", 55: "7", 74: "j", 188: "<",
-    75: "k", 56: "8", 79: "o", 76: "l", 191: 59, 80: 61, 189: 63,
-    219: 64, 16: 66, 221: 68, 187: 69, 13: 71, 38: 73, 37: 75,
-    35: 76 }, _defineProperty(_KeysTranslator, "16", 17), _defineProperty(_KeysTranslator, 192, 19), _defineProperty(_KeysTranslator, 81, 22), _defineProperty(_KeysTranslator, 90, 24), _defineProperty(_KeysTranslator, 83, 26), _defineProperty(_KeysTranslator, 50, 29), _defineProperty(_KeysTranslator, 69, 31), _defineProperty(_KeysTranslator, 32, 34), _defineProperty(_KeysTranslator, 70, 36), _defineProperty(_KeysTranslator, 52, 38), _defineProperty(_KeysTranslator, 71, 41), _defineProperty(_KeysTranslator, 78, 43), _defineProperty(_KeysTranslator, 54, 46), _defineProperty(_KeysTranslator, 85, 48), _defineProperty(_KeysTranslator, 77, 50), _defineProperty(_KeysTranslator, 73, 53), _defineProperty(_KeysTranslator, 57, 55), _defineProperty(_KeysTranslator, 190, 58), _defineProperty(_KeysTranslator, 186, 60), _defineProperty(_KeysTranslator, 48, 62), _defineProperty(_KeysTranslator, 222, 65), _defineProperty(_KeysTranslator, 220, 67), _defineProperty(_KeysTranslator, 8, 70), _defineProperty(_KeysTranslator, 40, 72), _defineProperty(_KeysTranslator, 46, 74), _KeysTranslator);
+    75: "k", 56: "8", 79: "o", 76: "l", 191: 59, 80: "p", 189: "-",
+    219: 64, 16: "b", 221: 68, 187: 69, 13: 71, 38: 73, 37: 75,
+    35: 76 }, _defineProperty(_KeysTranslator, "16", 17), _defineProperty(_KeysTranslator, 192, 19), _defineProperty(_KeysTranslator, 81, 22), _defineProperty(_KeysTranslator, 90, 24), _defineProperty(_KeysTranslator, 83, 26), _defineProperty(_KeysTranslator, 50, 29), _defineProperty(_KeysTranslator, 69, 31), _defineProperty(_KeysTranslator, 32, 34), _defineProperty(_KeysTranslator, 70, 36), _defineProperty(_KeysTranslator, 52, 38), _defineProperty(_KeysTranslator, 71, 41), _defineProperty(_KeysTranslator, 78, 43), _defineProperty(_KeysTranslator, 54, 46), _defineProperty(_KeysTranslator, 85, 48), _defineProperty(_KeysTranslator, 77, 50), _defineProperty(_KeysTranslator, 73, "i"), _defineProperty(_KeysTranslator, 57, "9"), _defineProperty(_KeysTranslator, 190, ">"), _defineProperty(_KeysTranslator, 186, ":"), _defineProperty(_KeysTranslator, 48, 62), _defineProperty(_KeysTranslator, 222, 65), _defineProperty(_KeysTranslator, 220, 67), _defineProperty(_KeysTranslator, 8, 70), _defineProperty(_KeysTranslator, 40, 72), _defineProperty(_KeysTranslator, 46, 74), _KeysTranslator);
 
 function translateSong(song) {
     var array = [];
