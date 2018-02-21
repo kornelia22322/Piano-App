@@ -1,9 +1,8 @@
 export default class SingleKey {
-    constructor(id, mp3Id, keyboardEventId, isWhite) {
+    constructor(keyboardEventId, mp3Id, isWhite) {
         let URL = 'http://localhost:3003/music?id=a';
-        this.id = id;
-        this.mp3Id = mp3Id;
         this.keyboardEventId = keyboardEventId;
+        this.mp3Id = mp3Id;
         this.isWhite = isWhite;
         this.stringPattern = "";
         URL += mp3Id + '.mp3';
@@ -13,10 +12,10 @@ export default class SingleKey {
 
     setStringPattern() {
         if(this.isWhite) {
-            this.stringPattern = "key-white-" + this.id;
+            this.stringPattern = "#key-white-" + this.keyboardEventId;
         }
         else {
-            this.stringPattern = "key-black-" + this.id;
+            this.stringPattern = "#key-black-" + this.keyboardEventId;
         }
     }
 }

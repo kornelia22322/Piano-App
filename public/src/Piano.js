@@ -7,7 +7,7 @@ export default class Piano {
         this.blacks = blacks;
     }
 
-    addKeytoPiano(id, mp3Id, keyboardEventId, isWhite) {
-        this.keyArray.push(new SingleKey(id, mp3Id, keyboardEventId, isWhite));
+    addKeytoPiano(keyboardEventId, mp3Id, isWhite) {
+        this.keyArray[keyboardEventId] = new SingleKey(keyboardEventId, mp3Id, isWhite);
     }
 }

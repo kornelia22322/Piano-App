@@ -2,23 +2,22 @@ import Piano from "./Piano.js";
 
 export default class PianoBuilder {
     constructor() {
-        this.mapWhiteKeys = { 0:16, 1:18, 2:20, 3:21, 4:23, 5:25, 6:27,
-                            7:28, 8:30, 9:32, 10:33, 11:35, 12:37, 13:39,
-                            14:40, 15:42, 16:44, 17:45, 18:47, 19:49, 20:51,
-                            21:52, 22:54, 23:56, 24:57, 25:59, 26:61, 27:63,
-                            28:64, 29:66, 30:68, 31:69, 32:71, 33:73, 34:75,
-                            35:76  };
-        this.mapBlackKeys = { 0:17, 1:19,
-                            2:22, 3:24, 4:26,
-                            5:29, 6:31,
-                            7:34, 8:36, 9:38,
-                            10:41, 11:43,
-                            12:46, 13:48, 14:50,
-                            15:53, 16:55,
-                            17:58, 18:60, 19:62,
-                            20:65, 21:67,
-                            22:70, 23:72, 24:74 };
-
+        this.mapWhiteKeys = [ {17:16}, {20:18}, {27:20}, {49:21}, {65:23}, {18:25}, {88:27},
+                            {87:28}, {51:30}, {68:32}, {67:33}, {86:35}, {82:37}, {53:39},
+                            {84:40}, {66:42}, {72:44}, {89:45}, {55:47}, {74:49}, {188:51},
+                            {75:52}, {56:54}, {79:56}, {76:57}, {191:59}, {80:61}, {189:63},
+                            {219:64}, {16:66}, {221:68}, {187:69}, {13:71}, {38:73}, {37:75},
+                            {35:76}  ];
+        this.mapBlackKeys = [ {16:17}, {192:19},
+                            {81:22}, {90:24}, {83:26},
+                            {50:29}, {69:31},
+                            {32:34}, {70:36}, {52:38},
+                            {71:41}, {78:43},
+                            {54:46}, {85:48}, {77:50},
+                            {73:53}, {57:55},
+                            {190:58}, {186:60}, {48:62},
+                            {222:65}, {220:67},
+                            {8:70}, {40:72}, {46:74} ];
         this.whites = Object.keys(this.mapWhiteKeys).length;
         this.blacks = Object.keys(this.mapBlackKeys).length;
         this.piano = null;
@@ -29,11 +28,13 @@ export default class PianoBuilder {
     };
 
     step2() {
-        for(let i = 0; i < this.whites; i++){
-            this.piano.addKeytoPiano(i, this.mapWhiteKeys[i], " ", true);
+        for(let i in this.mapWhiteKeys) {
+            let val = Object.keys(this.mapWhiteKeys[i])[0];
+            this.piano.addKeytoPiano(Number(val), this.mapWhiteKeys[i][val], true);
         }
-        for(let i = 0; i < this.blacks; i++){
-            this.piano.addKeytoPiano(i, this.mapBlackKeys[i], " ", false);
+        for(let i in this.mapBlackKeys){
+            let val = Object.keys(this.mapBlackKeys[i])[0];
+            this.piano.addKeytoPiano(Number(val), this.mapBlackKeys[i][val], false);
         }
     };
 

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,26 +70,62 @@
 "use strict";
 
 
-var _PianoBuilder = __webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var _PianoBuilder2 = _interopRequireDefault(_PianoBuilder);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _AudioHandler = __webpack_require__(4);
+var _Piano = __webpack_require__(1);
 
-var _AudioHandler2 = _interopRequireDefault(_AudioHandler);
-
-var _script = __webpack_require__(5);
+var _Piano2 = _interopRequireDefault(_Piano);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function init() {
-  (0, _script.initStyleAdding)();
-  var pianoBuilder = new _PianoBuilder2.default();
-  var piano = pianoBuilder.build();
-  (0, _AudioHandler.addClickEvents)(piano);
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-init();
+var PianoBuilder = function () {
+    function PianoBuilder() {
+        _classCallCheck(this, PianoBuilder);
+
+        this.mapWhiteKeys = [{ 17: 16 }, { 20: 18 }, { 27: 20 }, { 49: 21 }, { 65: 23 }, { 18: 25 }, { 88: 27 }, { 87: 28 }, { 51: 30 }, { 68: 32 }, { 67: 33 }, { 86: 35 }, { 82: 37 }, { 53: 39 }, { 84: 40 }, { 66: 42 }, { 72: 44 }, { 89: 45 }, { 55: 47 }, { 74: 49 }, { 188: 51 }, { 75: 52 }, { 56: 54 }, { 79: 56 }, { 76: 57 }, { 191: 59 }, { 80: 61 }, { 189: 63 }, { 219: 64 }, { 16: 66 }, { 221: 68 }, { 187: 69 }, { 13: 71 }, { 38: 73 }, { 37: 75 }, { 35: 76 }];
+        this.mapBlackKeys = [{ 16: 17 }, { 192: 19 }, { 81: 22 }, { 90: 24 }, { 83: 26 }, { 50: 29 }, { 69: 31 }, { 32: 34 }, { 70: 36 }, { 52: 38 }, { 71: 41 }, { 78: 43 }, { 54: 46 }, { 85: 48 }, { 77: 50 }, { 73: 53 }, { 57: 55 }, { 190: 58 }, { 186: 60 }, { 48: 62 }, { 222: 65 }, { 220: 67 }, { 8: 70 }, { 40: 72 }, { 46: 74 }];
+        this.whites = Object.keys(this.mapWhiteKeys).length;
+        this.blacks = Object.keys(this.mapBlackKeys).length;
+        this.piano = null;
+    }
+
+    _createClass(PianoBuilder, [{
+        key: "step1",
+        value: function step1() {
+            this.piano = new _Piano2.default(this.whites, this.blacks);
+        }
+    }, {
+        key: "step2",
+        value: function step2() {
+            for (var i in this.mapWhiteKeys) {
+                var val = Object.keys(this.mapWhiteKeys[i])[0];
+                this.piano.addKeytoPiano(Number(val), this.mapWhiteKeys[i][val], true);
+            }
+            for (var _i in this.mapBlackKeys) {
+                var _val = Object.keys(this.mapBlackKeys[_i])[0];
+                this.piano.addKeytoPiano(Number(_val), this.mapBlackKeys[_i][_val], false);
+            }
+        }
+    }, {
+        key: "build",
+        value: function build() {
+            this.step1();
+            this.step2();
+            return this.piano;
+        }
+    }]);
+
+    return PianoBuilder;
+}();
+
+exports.default = PianoBuilder;
+;
 
 /***/ }),
 /* 1 */
@@ -99,84 +135,7 @@ init();
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Piano = __webpack_require__(2);
-
-var _Piano2 = _interopRequireDefault(_Piano);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var PianoBuilder = function () {
-  function PianoBuilder() {
-    _classCallCheck(this, PianoBuilder);
-
-    this.mapWhiteKeys = { 0: 16, 1: 18, 2: 20, 3: 21, 4: 23, 5: 25, 6: 27,
-      7: 28, 8: 30, 9: 32, 10: 33, 11: 35, 12: 37, 13: 39,
-      14: 40, 15: 42, 16: 44, 17: 45, 18: 47, 19: 49, 20: 51,
-      21: 52, 22: 54, 23: 56, 24: 57, 25: 59, 26: 61, 27: 63,
-      28: 64, 29: 66, 30: 68, 31: 69, 32: 71, 33: 73, 34: 75, 35: 76 };
-    this.mapBlackKeys = { 0: 17, 1: 19,
-      2: 22, 3: 24, 4: 26,
-      5: 29, 6: 31,
-      7: 34, 8: 36, 9: 38,
-      10: 41, 11: 43,
-      12: 46, 13: 48, 14: 50,
-      15: 53, 16: 55,
-      17: 58, 18: 60, 19: 62,
-      20: 65, 21: 67,
-      22: 70, 23: 72, 24: 74 };
-
-    this.whites = Object.keys(this.mapWhiteKeys).length;
-    this.blacks = Object.keys(this.mapBlackKeys).length;
-    this.piano = null;
-  }
-
-  _createClass(PianoBuilder, [{
-    key: "step1",
-    value: function step1() {
-      this.piano = new _Piano2.default(this.whites, this.blacks);
-    }
-  }, {
-    key: "step2",
-    value: function step2() {
-      for (var i = 0; i < this.whites; i++) {
-        this.piano.addKeytoPiano(i, this.mapWhiteKeys[i], " ", true);
-      }
-      for (var _i = 0; _i < this.blacks; _i++) {
-        this.piano.addKeytoPiano(_i, this.mapBlackKeys[_i], " ", false);
-      }
-      console.log(this.piano.keyArray);
-    }
-  }, {
-    key: "build",
-    value: function build() {
-      this.step1();
-      this.step2();
-      return this.piano;
-    }
-  }]);
-
-  return PianoBuilder;
-}();
-
-exports.default = PianoBuilder;
-;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -190,25 +149,73 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Piano = function () {
-  function Piano(whites, blacks) {
-    _classCallCheck(this, Piano);
+    function Piano(whites, blacks) {
+        _classCallCheck(this, Piano);
 
-    this.keyArray = [];
-    this.whites = whites;
-    this.blacks = blacks;
-  }
-
-  _createClass(Piano, [{
-    key: "addKeytoPiano",
-    value: function addKeytoPiano(id, mp3Id, keyboardEventId, isWhite) {
-      this.keyArray.push(new _SingleKey2.default(id, mp3Id, keyboardEventId, isWhite));
+        this.keyArray = [];
+        this.whites = whites;
+        this.blacks = blacks;
     }
-  }]);
 
-  return Piano;
+    _createClass(Piano, [{
+        key: "addKeytoPiano",
+        value: function addKeytoPiano(keyboardEventId, mp3Id, isWhite) {
+            this.keyArray[keyboardEventId] = new _SingleKey2.default(keyboardEventId, mp3Id, isWhite);
+        }
+    }]);
+
+    return Piano;
 }();
 
 exports.default = Piano;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _PianoBuilder = __webpack_require__(0);
+
+var _PianoBuilder2 = _interopRequireDefault(_PianoBuilder);
+
+var _script = __webpack_require__(4);
+
+var _audio = __webpack_require__(5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+$(document).ready(function () {
+    //Builder design pattern
+    var pianoBuilder = new _PianoBuilder2.default();
+    var piano = pianoBuilder.build();
+
+    (0, _script.initStyleAdding)(pianoBuilder, piano);
+    (0, _audio.addClickEvents)(piano);
+
+    $(document).keydown(function (e) {
+        var val = piano.keyArray[e.keyCode];
+        if (val != undefined) {
+            if (val.isWhite) {
+                (0, _script.changeWhiteKeyColor)(val.stringPattern);
+            } else if (!val.isWhite) {
+                (0, _script.changeBlackKeyColor)(val.stringPattern);
+            }
+            (0, _audio.getData)(piano.keyArray[e.keyCode].URL, _audio.context);
+        }
+    });
+    $(document).keyup(function (e) {
+        var val = piano.keyArray[e.keyCode];
+        if (val != undefined) {
+            if (val.isWhite) {
+                (0, _script.getBackWhiteKeyColor)(val.stringPattern);
+            } else if (!val.isWhite) {
+                (0, _script.getBackBlackKeyColor)(val.stringPattern);
+            }
+        }
+    });
+});
 
 /***/ }),
 /* 3 */
@@ -218,7 +225,7 @@ exports.default = Piano;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -226,32 +233,31 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var SingleKey = function () {
-  function SingleKey(id, mp3Id, keyboardEventId, isWhite) {
-    _classCallCheck(this, SingleKey);
+    function SingleKey(keyboardEventId, mp3Id, isWhite) {
+        _classCallCheck(this, SingleKey);
 
-    var URL = 'http://localhost:3003/music?id=a';
-    this.id = id;
-    this.mp3Id = mp3Id;
-    this.keyboardEventId = keyboardEventId;
-    this.isWhite = isWhite;
-    this.stringPattern = "";
-    URL += mp3Id + '.mp3';
-    this.URL = URL;
-    this.setStringPattern();
-  }
-
-  _createClass(SingleKey, [{
-    key: 'setStringPattern',
-    value: function setStringPattern() {
-      if (this.isWhite) {
-        this.stringPattern = "key-white-" + this.id;
-      } else {
-        this.stringPattern = "key-black-" + this.id;
-      }
+        var URL = 'http://localhost:3003/music?id=a';
+        this.keyboardEventId = keyboardEventId;
+        this.mp3Id = mp3Id;
+        this.isWhite = isWhite;
+        this.stringPattern = "";
+        URL += mp3Id + '.mp3';
+        this.URL = URL;
+        this.setStringPattern();
     }
-  }]);
 
-  return SingleKey;
+    _createClass(SingleKey, [{
+        key: 'setStringPattern',
+        value: function setStringPattern() {
+            if (this.isWhite) {
+                this.stringPattern = "#key-white-" + this.keyboardEventId;
+            } else {
+                this.stringPattern = "#key-black-" + this.keyboardEventId;
+            }
+        }
+    }]);
+
+    return SingleKey;
 }();
 
 exports.default = SingleKey;
@@ -264,42 +270,97 @@ exports.default = SingleKey;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
-exports.addClickEvents = addClickEvents;
-var yodelBuffer = void 0;
+exports.initStyleAdding = initStyleAdding;
+exports.changeWhiteKeyColor = changeWhiteKeyColor;
+exports.getBackWhiteKeyColor = getBackWhiteKeyColor;
+exports.changeBlackKeyColor = changeBlackKeyColor;
+exports.getBackBlackKeyColor = getBackBlackKeyColor;
 
-function addClickEvents(piano) {
-  var context = new AudioContext();
+var _Piano = __webpack_require__(1);
 
-  var _loop = function _loop(i) {
-    $("#" + piano.keyArray[i].stringPattern).on("click", function () {
-      console.log(piano.keyArray[i].URL);
-      getData(piano.keyArray[i].URL, context);
-    });
-  };
+var _Piano2 = _interopRequireDefault(_Piano);
 
-  for (var i = 0; i < piano.keyArray.length; i++) {
-    _loop(i);
-  }
+var _PianoBuilder = __webpack_require__(0);
+
+var _PianoBuilder2 = _interopRequireDefault(_PianoBuilder);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function initStyleAdding(pianoBuilder, piano) {
+	addDivs(pianoBuilder);
+	addMouseOverEvent(piano);
 }
 
-function getData(URL, context) {
-  window.fetch(URL).then(function (response) {
-    return response.arrayBuffer();
-  }).then(function (arrayBuffer) {
-    return context.decodeAudioData(arrayBuffer);
-  }).then(function (audioBuffer) {
-    yodelBuffer = audioBuffer;
-    play(yodelBuffer, context);
-  });
+function addDivs(pianoBuilder) {
+	var templateforWhite = '';
+	var templateforBlack = '';
+	var leftforWhite = 0;
+	var leftforBlack = 2.02777;
+	var iteratorforBlack = 0;
+	for (var i in pianoBuilder.mapWhiteKeys) {
+		templateforWhite += '<div class = "single-key-white" id = "key-white-' + Object.keys(pianoBuilder.mapWhiteKeys[i])[0] + '"></div>';
+		$('<style>#key-white-' + Object.keys(pianoBuilder.mapWhiteKeys[i])[0] + '{ left:' + leftforWhite + '%;  }</style>').appendTo('head');
+		leftforWhite += 2.7777;
+	}
+	for (var _i in pianoBuilder.mapBlackKeys) {
+		templateforBlack += '<div class = "single-key-black" id = "key-black-' + Object.keys(pianoBuilder.mapBlackKeys[_i])[0] + '"></div>';
+		$('<style>#key-black-' + Object.keys(pianoBuilder.mapBlackKeys[_i])[0] + '{ left:' + leftforBlack + '%;  }</style>').appendTo('head');
+		if (iteratorforBlack % 5 != 1 && iteratorforBlack % 5 != 4) {
+			leftforBlack += 2.7777;
+		} else {
+			leftforBlack += 5.5554;
+		}
+		iteratorforBlack++;
+	}
+	$("#whites").append(templateforWhite);
+	$("#black").append(templateforBlack);
 }
 
-function play(audioBuffer, context) {
-  var source = context.createBufferSource();
-  source.buffer = audioBuffer;
-  source.connect(context.destination);
-  source.start();
+function addMouseOverEvent(piano) {
+	var _loop = function _loop(i) {
+		if (piano.keyArray[i] != undefined && piano.keyArray[i].isWhite) {
+			$(piano.keyArray[i].stringPattern).on({
+				"mouseover": function mouseover() {
+					console.log(piano.keyArray[i].stringPattern);
+					changeWhiteKeyColor(piano.keyArray[i].stringPattern);
+				},
+				"mouseout": function mouseout() {
+					getBackWhiteKeyColor(piano.keyArray[i].stringPattern);
+				}
+			});
+		} else if (piano.keyArray[i] != undefined && !piano.keyArray[i].isWhite) {
+			$(piano.keyArray[i].stringPattern).on({
+				"mouseover": function mouseover() {
+					changeBlackKeyColor(piano.keyArray[i].stringPattern);
+				},
+				"mouseout": function mouseout() {
+					getBackBlackKeyColor(piano.keyArray[i].stringPattern);
+				}
+			});
+		}
+	};
+
+	for (var i in piano.keyArray) {
+		_loop(i);
+	}
+}
+
+function changeWhiteKeyColor(divId) {
+	$(divId).css({ "background": "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))" });
+}
+
+function getBackWhiteKeyColor(divId) {
+	$(divId).css({ "background": "linear-gradient(0deg, rgb(224,224,224), rgb(224,224,224) 5%, rgb(255,255,255))" });
+}
+
+function changeBlackKeyColor(divId) {
+	$(divId).css({ "background": "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))" });
+}
+
+function getBackBlackKeyColor(divId) {
+	$(divId).css({ "background": "rgb(0,0,0)" });
 }
 
 /***/ }),
@@ -310,78 +371,43 @@ function play(audioBuffer, context) {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
-exports.initStyleAdding = initStyleAdding;
-function initStyleAdding() {
-	var numofWhiteKeys = 36;
-	var numofBlackKeys = 25;
-	var total = numofWhiteKeys + numofBlackKeys;
-	addWhiteDivs(numofWhiteKeys);
-	addBlackDivs(numofBlackKeys);
-	addMouseOverEvent(numofWhiteKeys, numofBlackKeys);
+exports.addClickEvents = addClickEvents;
+exports.getData = getData;
+var context = exports.context = new AudioContext();
+
+function addClickEvents(piano) {
+    var _loop = function _loop(i) {
+        if (piano.keyArray[i] != undefined) {
+            $(piano.keyArray[i].stringPattern).on("click", function () {
+                console.log(piano.keyArray[i]);
+                getData(piano.keyArray[i].URL, context);
+            });
+        }
+    };
+
+    for (var i in piano.keyArray) {
+        _loop(i);
+    }
 }
 
-function addWhiteDivs(numofKeys) {
-	var template = '';
-	var left = 0;
-	for (var i = 0; i < numofKeys; i++) {
-		template += '<div class = "single-key-white" id = "key-white-' + i + '"></div>';
-		$('<style>#key-white-' + i + '{ left:' + left + '%;  }</style>').appendTo('head');
-		left += 2.7777;
-	}
-	$("#whites").append(template);
+function getData(URL, context) {
+    window.fetch(URL).then(function (response) {
+        return response.arrayBuffer();
+    }).then(function (arrayBuffer) {
+        return context.decodeAudioData(arrayBuffer);
+    }).then(function (audioBuffer) {
+        var yodelBuffer = audioBuffer;
+        play(yodelBuffer, context);
+    });
 }
 
-function addBlackDivs(numofKeys) {
-	var template = '';
-	var left = 2.0277;
-	for (var i = 0; i < numofKeys; i++) {
-		template += '<div class = "single-key-black" id = "key-black-' + i + '"></div>';
-		$('<style>#key-black-' + i + '{ left:' + left + '%;  }</style>').appendTo('head');
-		if (i % 5 != 1 && i % 5 != 4) {
-			left += 2.7777;
-		} else {
-			left += 5.5554;
-		}
-	}
-	$("#black").append(template);
-}
-
-function addMouseOverEvent(numofWhiteKeys, numofBlackKeys) {
-	var _loop = function _loop(i) {
-		var stringPattern = "#key-white-" + i;
-		console.log("Git");
-		$(stringPattern).on("mouseover", function () {
-			console.log("I see you");
-			$(stringPattern).css({ "background": "linear-gradient(0deg, rgb(176,176,176), rgb(176,176,176) 5%, rgb(255,255,255))" });
-		});
-		$(stringPattern).on("mouseout", function () {
-			console.log("I see you");
-			$(stringPattern).css({ "background": "linear-gradient(0deg, rgb(224,224,224), rgb(224,224,224) 5%, rgb(255,255,255))" });
-		});
-	};
-
-	for (var i = 0; i < numofWhiteKeys; i++) {
-		_loop(i);
-	}
-
-	var _loop2 = function _loop2(i) {
-		var stringPattern = "#key-black-" + i;
-		console.log("Git");
-		$(stringPattern).on("mouseover", function () {
-			console.log("I see you");
-			$(stringPattern).css({ "background": "linear-gradient(0deg, rgb(64,64,64), rgb(64,64,64) 5%, rgb(0,0,0))" });
-		});
-		$(stringPattern).on("mouseout", function () {
-			console.log("I see you");
-			$(stringPattern).css({ "background": "rgb(0,0,0)" });
-		});
-	};
-
-	for (var i = 0; i < numofBlackKeys; i++) {
-		_loop2(i);
-	}
+function play(audioBuffer, context) {
+    var source = context.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(context.destination);
+    source.start();
 }
 
 /***/ })

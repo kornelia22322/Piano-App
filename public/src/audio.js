@@ -1,20 +1,22 @@
-let yodelBuffer;
+export const context = new AudioContext();
 
 export function addClickEvents(piano){
-    let context = new AudioContext();
-    for(let i = 0; i < piano.keyArray.length; i++){
-        $("#" + piano.keyArray[i].stringPattern).on("click", function() {
-            getData(piano.keyArray[i].URL, context);
-        });
+    for(let i in piano.keyArray){
+        if(piano.keyArray[i]!=undefined) {
+            $(piano.keyArray[i].stringPattern).on("click", function() {
+                console.log(piano.keyArray[i]);
+                getData(piano.keyArray[i].URL, context);
+            });
+        }
     }
 }
 
-  function getData(URL, context) {
+export function getData(URL, context) {
     window.fetch(URL)
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
         .then(audioBuffer => {
-        yodelBuffer = audioBuffer;
+        let yodelBuffer = audioBuffer;
         play(yodelBuffer, context);
     });
 }
