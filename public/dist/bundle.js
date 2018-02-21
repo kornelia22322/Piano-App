@@ -184,6 +184,12 @@ var _script = __webpack_require__(4);
 
 var _audio = __webpack_require__(5);
 
+var _Data = __webpack_require__(6);
+
+var _translator = __webpack_require__(7);
+
+var _injectSong = __webpack_require__(8);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 $(document).ready(function () {
@@ -197,6 +203,7 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         var val = piano.keyArray[e.keyCode];
         if (val != undefined) {
+            console.log(piano.keyArray[e.keyCode]);
             if (val.isWhite) {
                 (0, _script.changeWhiteKeyColor)(val.stringPattern);
             } else if (!val.isWhite) {
@@ -215,7 +222,18 @@ $(document).ready(function () {
             }
         }
     });
+
+    console.log(_Data.silentNight);
+    initprogress();
 });
+
+function initprogress() {
+    var song = _Data.hallelujah;
+    console.log(song);
+    var output = (0, _translator.translateSong)(song);
+    console.log(output);
+    (0, _injectSong.injectSong)(output);
+}
 
 /***/ }),
 /* 3 */
@@ -296,14 +314,21 @@ function initStyleAdding(pianoBuilder, piano) {
 function addDivs(pianoBuilder) {
 	var templateforWhite = '';
 	var templateforBlack = '';
+	var templateforWhiteSpan = '';
+
 	var leftforWhite = 0;
 	var leftforBlack = 2.02777;
 	var iteratorforBlack = 0;
+
 	for (var i in pianoBuilder.mapWhiteKeys) {
-		templateforWhite += '<div class = "single-key-white" id = "key-white-' + Object.keys(pianoBuilder.mapWhiteKeys[i])[0] + '"></div>';
-		$('<style>#key-white-' + Object.keys(pianoBuilder.mapWhiteKeys[i])[0] + '{ left:' + leftforWhite + '%;  }</style>').appendTo('head');
+		var val = Object.keys(pianoBuilder.mapWhiteKeys[i])[0];
+		templateforWhite += '<div class = "single-key-white" id = "key-white-' + val + '"></div>';
+		$('<style>#key-white-' + val + '{ left:' + leftforWhite + '%;  }</style>').appendTo('head');
+		templateforWhiteSpan = '<div class = "single-span" id = "span-white-' + val + '></div>';
+		$('<style>#key-white-' + val + '{ left:' + leftforWhite + '%;  }</style>').appendTo('head');
 		leftforWhite += 2.7777;
 	}
+
 	for (var _i in pianoBuilder.mapBlackKeys) {
 		templateforBlack += '<div class = "single-key-black" id = "key-black-' + Object.keys(pianoBuilder.mapBlackKeys[_i])[0] + '"></div>';
 		$('<style>#key-black-' + Object.keys(pianoBuilder.mapBlackKeys[_i])[0] + '{ left:' + leftforBlack + '%;  }</style>').appendTo('head');
@@ -381,7 +406,6 @@ function addClickEvents(piano) {
     var _loop = function _loop(i) {
         if (piano.keyArray[i] != undefined) {
             $(piano.keyArray[i].stringPattern).on("click", function () {
-                console.log(piano.keyArray[i]);
                 getData(piano.keyArray[i].URL, context);
             });
         }
@@ -408,6 +432,75 @@ function play(audioBuffer, context) {
     source.buffer = audioBuffer;
     source.connect(context.destination);
     source.start();
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+                            value: true
+});
+var silentNight = exports.silentNight = [55, 74, 55, 72, 55, 74, 55, 72, 56, 56, 188, 75, 75, 55, 74, 74, 75, 188, 74, 55, 74, 55, 72, 74, 74, 75, 188, 74, 55, 74, 55, 72, 56, 56, 76, 56, 188, 75, 79, 75, 55, 72, 55, 89, 66, 84];
+
+var hallelujah = exports.hallelujah = [72, 55, 55, 55, 55, 74, 74, 74, 72, 55, 55, 55, 55, 55, 74, 74, 74, 74, 74, 74, 74, 74, 74];
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _KeysTranslator;
+
+exports.translateSong = translateSong;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var KeysTranslator = (_KeysTranslator = { 17: 16, 20: 18, 27: 20, 49: 21, 65: 23, 18: 25, 88: 27,
+    87: 28, 51: 30, 68: 32, 67: 33, 86: 35, 82: 37, 53: 39,
+    84: "t", 66: "b", 72: "h", 89: "y", 55: "7", 74: "j", 188: "<",
+    75: "k", 56: "8", 79: "o", 76: "l", 191: 59, 80: 61, 189: 63,
+    219: 64, 16: 66, 221: 68, 187: 69, 13: 71, 38: 73, 37: 75,
+    35: 76 }, _defineProperty(_KeysTranslator, "16", 17), _defineProperty(_KeysTranslator, 192, 19), _defineProperty(_KeysTranslator, 81, 22), _defineProperty(_KeysTranslator, 90, 24), _defineProperty(_KeysTranslator, 83, 26), _defineProperty(_KeysTranslator, 50, 29), _defineProperty(_KeysTranslator, 69, 31), _defineProperty(_KeysTranslator, 32, 34), _defineProperty(_KeysTranslator, 70, 36), _defineProperty(_KeysTranslator, 52, 38), _defineProperty(_KeysTranslator, 71, 41), _defineProperty(_KeysTranslator, 78, 43), _defineProperty(_KeysTranslator, 54, 46), _defineProperty(_KeysTranslator, 85, 48), _defineProperty(_KeysTranslator, 77, 50), _defineProperty(_KeysTranslator, 73, 53), _defineProperty(_KeysTranslator, 57, 55), _defineProperty(_KeysTranslator, 190, 58), _defineProperty(_KeysTranslator, 186, 60), _defineProperty(_KeysTranslator, 48, 62), _defineProperty(_KeysTranslator, 222, 65), _defineProperty(_KeysTranslator, 220, 67), _defineProperty(_KeysTranslator, 8, 70), _defineProperty(_KeysTranslator, 40, 72), _defineProperty(_KeysTranslator, 46, 74), _KeysTranslator);
+
+function translateSong(song) {
+    var array = [];
+    for (var i in song) {
+        array.push(KeysTranslator[song[i]]);
+    }
+    return array;
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.injectSong = injectSong;
+function injectSong(song) {
+    var len = song.length;
+    var singleWidth = (100 / len).toFixed(5);
+    var template = '';
+    singleWidth += "%";
+    for (var i in song) {
+        template += '<div class = "single-letter"><p>' + song[i] + '</p></div>';
+    }
+    $(".spans#black").append(template);
+    //$(".single-letter").css({"width" : singleWidth, "height" : "100%", "position" : "absolute"});
 }
 
 /***/ })

@@ -10,14 +10,21 @@ export function initStyleAdding(pianoBuilder, piano) {
 function addDivs(pianoBuilder) {
 	let templateforWhite = '';
 	let templateforBlack = '';
+	let templateforWhiteSpan = '';
+	
 	let leftforWhite = 0;
 	let leftforBlack = 2.02777;
 	let iteratorforBlack = 0;
+
 	for(let i in pianoBuilder.mapWhiteKeys) {
-		templateforWhite += '<div class = "single-key-white" id = "key-white-' + Object.keys(pianoBuilder.mapWhiteKeys[i])[0] + '"></div>';
-		$('<style>#key-white-'+ Object.keys(pianoBuilder.mapWhiteKeys[i])[0] +'{ left:'+leftforWhite+'%;  }</style>').appendTo('head');
+		let val = Object.keys(pianoBuilder.mapWhiteKeys[i])[0];
+		templateforWhite += '<div class = "single-key-white" id = "key-white-' + val + '"></div>';
+		$('<style>#key-white-'+ val +'{ left:'+leftforWhite+'%;  }</style>').appendTo('head');
+		templateforWhiteSpan = '<div class = "single-span" id = "span-white-' + val + '></div>';
+		$('<style>#key-white-'+ val +'{ left:'+leftforWhite+'%;  }</style>').appendTo('head');
 		leftforWhite += 2.7777;
 	}
+
 	for(let i in pianoBuilder.mapBlackKeys) {
 		templateforBlack += '<div class = "single-key-black" id = "key-black-' + Object.keys(pianoBuilder.mapBlackKeys[i])[0] + '"></div>';
 		$('<style>#key-black-'+ Object.keys(pianoBuilder.mapBlackKeys[i])[0] +'{ left:'+leftforBlack+'%;  }</style>').appendTo('head');

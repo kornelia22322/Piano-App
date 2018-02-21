@@ -4,7 +4,6 @@ export function addClickEvents(piano){
     for(let i in piano.keyArray){
         if(piano.keyArray[i]!=undefined) {
             $(piano.keyArray[i].stringPattern).on("click", function() {
-                console.log(piano.keyArray[i]);
                 getData(piano.keyArray[i].URL, context);
             });
         }
