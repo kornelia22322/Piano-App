@@ -11,11 +11,7 @@ export default class SingleKey {
     }
 
     setStringPattern() {
-        if(this.isWhite) {
-            this.stringPattern = "#key-white-" + this.keyboardEventId;
-        }
-        else {
-            this.stringPattern = "#key-black-" + this.keyboardEventId;
-        }
+        this.stringPattern = ((this.isWhite) ? "#key-white-" + this.keyboardEventId :
+            this.stringPattern = "#key-black-" + this.keyboardEventId);        
     }
 }

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -140,7 +140,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _SingleKey = __webpack_require__(3);
+var _SingleKey = __webpack_require__(7);
 
 var _SingleKey2 = _interopRequireDefault(_SingleKey);
 
@@ -171,117 +171,6 @@ exports.default = Piano;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _PianoBuilder = __webpack_require__(0);
-
-var _PianoBuilder2 = _interopRequireDefault(_PianoBuilder);
-
-var _script = __webpack_require__(4);
-
-var _audio = __webpack_require__(5);
-
-var _Data = __webpack_require__(6);
-
-var _translator = __webpack_require__(7);
-
-var _injectSong = __webpack_require__(8);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-$(document).ready(function () {
-    //Builder design pattern
-    var pianoBuilder = new _PianoBuilder2.default();
-    var piano = pianoBuilder.build();
-
-    (0, _script.initStyleAdding)(pianoBuilder, piano);
-    (0, _audio.addClickEvents)(piano);
-
-    $(document).keydown(function (e) {
-        var val = piano.keyArray[e.keyCode];
-        if (val != undefined) {
-            console.log(piano.keyArray[e.keyCode]);
-            if (val.isWhite) {
-                (0, _script.changeWhiteKeyColor)(val.stringPattern);
-            } else if (!val.isWhite) {
-                (0, _script.changeBlackKeyColor)(val.stringPattern);
-            }
-            (0, _audio.getData)(piano.keyArray[e.keyCode].URL, _audio.context);
-        }
-    });
-    $(document).keyup(function (e) {
-        var val = piano.keyArray[e.keyCode];
-        if (val != undefined) {
-            if (val.isWhite) {
-                (0, _script.getBackWhiteKeyColor)(val.stringPattern);
-            } else if (!val.isWhite) {
-                (0, _script.getBackBlackKeyColor)(val.stringPattern);
-            }
-        }
-    });
-
-    console.log(_Data.silentNight);
-    initprogress();
-});
-
-function initprogress() {
-    var song = _Data.titanic;
-    console.log(song);
-    var output = (0, _translator.translateSong)(song);
-    console.log(output);
-    (0, _injectSong.injectSong)(output);
-}
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var SingleKey = function () {
-    function SingleKey(keyboardEventId, mp3Id, isWhite) {
-        _classCallCheck(this, SingleKey);
-
-        var URL = 'http://localhost:3003/music?id=a';
-        this.keyboardEventId = keyboardEventId;
-        this.mp3Id = mp3Id;
-        this.isWhite = isWhite;
-        this.stringPattern = "";
-        URL += mp3Id + '.mp3';
-        this.URL = URL;
-        this.setStringPattern();
-    }
-
-    _createClass(SingleKey, [{
-        key: 'setStringPattern',
-        value: function setStringPattern() {
-            if (this.isWhite) {
-                this.stringPattern = "#key-white-" + this.keyboardEventId;
-            } else {
-                this.stringPattern = "#key-black-" + this.keyboardEventId;
-            }
-        }
-    }]);
-
-    return SingleKey;
-}();
-
-exports.default = SingleKey;
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -390,7 +279,7 @@ function getBackBlackKeyColor(divId) {
 }
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -436,23 +325,7 @@ function play(audioBuffer, context) {
 }
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-                            value: true
-});
-var silentNight = exports.silentNight = [55, 74, 55, 72, 55, 74, 55, 72, 56, 56, 188, 75, 75, 55, 74, 74, 75, 188, 74, 55, 74, 55, 72, 74, 74, 75, 188, 74, 55, 74, 55, 72, 56, 56, 76, 56, 188, 75, 79, 75, 55, 72, 55, 89, 66, 84];
-
-var hallelujah = exports.hallelujah = [72, 55, 55, 55, 55, 74, 74, 74, 72, 55, 55, 55, 55, 55, 74, 74, 74, 74, 74, 74, 74, 74, 74];
-
-var titanic = exports.titanic = [79, 190, 190, 186, 80, 186, 190, 79, 190, 189, 80, 186, 79, 73, 188];
-
-/***/ }),
-/* 7 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -484,7 +357,7 @@ function translateSong(song) {
 }
 
 /***/ }),
-/* 8 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -493,17 +366,227 @@ function translateSong(song) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.injectSong = injectSong;
-function injectSong(song) {
-    var len = song.length;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _translator = __webpack_require__(4);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Song = function () {
+    function Song(songArray) {
+        _classCallCheck(this, Song);
+
+        this.songArray = songArray;
+        this.count = 0;
+        this.translatedArray = (0, _translator.translateSong)(songArray);
+    }
+
+    _createClass(Song, [{
+        key: 'inc',
+        value: function inc() {
+            this.count++;
+        }
+    }]);
+
+    return Song;
+}();
+
+exports.default = Song;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _PianoBuilder = __webpack_require__(0);
+
+var _PianoBuilder2 = _interopRequireDefault(_PianoBuilder);
+
+var _script = __webpack_require__(2);
+
+var _audio = __webpack_require__(3);
+
+var _Data = __webpack_require__(8);
+
+var _translator = __webpack_require__(4);
+
+var _keysDownHandle = __webpack_require__(9);
+
+var _Song = __webpack_require__(5);
+
+var _Song2 = _interopRequireDefault(_Song);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+$(document).ready(function () {
+    //Builder design pattern
+    var pianoBuilder = new _PianoBuilder2.default();
+    var piano = pianoBuilder.build();
+
+    (0, _script.initStyleAdding)(pianoBuilder, piano);
+    (0, _audio.addClickEvents)(piano);
+
+    var noSongMode = true;
+    (0, _keysDownHandle.playerFun)(piano);
+    initprogress();
+});
+
+function initprogress() {
+    var song = _Data.titanic;
+
+    var songobj = new _Song2.default(song);
+    (0, _keysDownHandle.setSong)(songobj);
+
+    console.log(songobj.songArray);
+
+    console.log(songobj.translatedArray);
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SingleKey = function () {
+    function SingleKey(keyboardEventId, mp3Id, isWhite) {
+        _classCallCheck(this, SingleKey);
+
+        var URL = 'http://localhost:3003/music?id=a';
+        this.keyboardEventId = keyboardEventId;
+        this.mp3Id = mp3Id;
+        this.isWhite = isWhite;
+        this.stringPattern = "";
+        URL += mp3Id + '.mp3';
+        this.URL = URL;
+        this.setStringPattern();
+    }
+
+    _createClass(SingleKey, [{
+        key: 'setStringPattern',
+        value: function setStringPattern() {
+            this.stringPattern = this.isWhite ? "#key-white-" + this.keyboardEventId : this.stringPattern = "#key-black-" + this.keyboardEventId;
+        }
+    }]);
+
+    return SingleKey;
+}();
+
+exports.default = SingleKey;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+                            value: true
+});
+var silentNight = exports.silentNight = [55, 74, 55, 72, 55, 74, 55, 72, 56, 56, 188, 75, 75, 55, 74, 74, 75, 188, 74, 55, 74, 55, 72, 74, 74, 75, 188, 74, 55, 74, 55, 72, 56, 56, 76, 56, 188, 75, 79, 75, 55, 72, 55, 89, 66, 84];
+
+var hallelujah = exports.hallelujah = [72, 55, 55, 55, 55, 74, 74, 74, 72, 55, 55, 55, 55, 55, 74, 74, 74, 74, 74, 74, 74, 74, 74];
+
+var titanic = exports.titanic = [79, 190, 190, 186, 80, 186, 190, 79, 190, 189, 80, 186, 79, 73, 188];
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.setSong = setSong;
+exports.playerFun = playerFun;
+
+var _script = __webpack_require__(2);
+
+var _audio = __webpack_require__(3);
+
+var _Song = __webpack_require__(5);
+
+var _Song2 = _interopRequireDefault(_Song);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var songToPlay = null;
+
+function setSong(song) {
+    songToPlay = song;
+    injectSong();
+}
+
+function injectSong() {
+    var len = songToPlay.length;
     var singleWidth = (100 / len).toFixed(5);
     var template = '';
     singleWidth += "%";
-    for (var i in song) {
-        template += '<div class = "single-letter"><p>' + song[i] + '</p></div>';
+    for (var i in songToPlay.translatedArray) {
+        template += '<div class = "single-letter" id = "single-letter-' + i + '"><p>' + songToPlay.translatedArray[i] + '</p>' + '<div class= "single-letter-follow" id="single-letter-follow-' + i + '"></div></div>';
     }
     $(".spans#black").append(template);
     //$(".single-letter").css({"width" : singleWidth, "height" : "100%", "position" : "absolute"});
+}
+
+function playerFun(piano) {
+    $(document).keydown(function (e) {
+        var val = piano.keyArray[e.keyCode];
+        if (val != undefined) {
+            if (val.isWhite) {
+                (0, _script.changeWhiteKeyColor)(val.stringPattern);
+            } else if (!val.isWhite) {
+                (0, _script.changeBlackKeyColor)(val.stringPattern);
+            }
+            (0, _audio.getData)(val.URL, _audio.context);
+            if (songToPlay != null) {
+                if (e.keyCode == songToPlay.songArray[songToPlay.count]) {
+                    console.log("BRAWO!");
+                    var pattern = "#single-letter-follow-" + songToPlay.count;
+                    colorDivsWidthVal(pattern);
+                    songToPlay.inc();
+                }
+            }
+        }
+    });
+    $(document).keyup(function (e) {
+        var val = piano.keyArray[e.keyCode];
+        if (val != undefined) {
+            if (val.isWhite) {
+                (0, _script.getBackWhiteKeyColor)(val.stringPattern);
+            } else if (!val.isWhite) {
+                (0, _script.getBackBlackKeyColor)(val.stringPattern);
+            }
+        }
+    });
+}
+
+function colorDivsWidthVal(pattern) {
+    var timesRun = 0;
+    var interval = setInterval(function () {
+        timesRun += 1;
+        if (timesRun === 100) {
+            clearInterval(interval);
+        }
+        var stringPattern = timesRun + "%";
+        console.log(stringPattern);
+        $(pattern).css({ "width": stringPattern });
+    }, 1);
 }
 
 /***/ })

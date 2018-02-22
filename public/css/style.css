@@ -5,6 +5,7 @@
 
 body {
 	background-color: #F8F8F8;
+	font-family: 'Bellefair', serif;
 }
 
 h1 {
@@ -15,18 +16,79 @@ h1 {
 	margin: 0 auto;
 	top: 50px;
 	position: relative;
+	color: grey;
+}
+
+p {
+	font-size: 18px;
+	color: #FFF;
+	font-weight: bold;
+	z-index: 10;
+}
+
+#header-wrapper {
+	background: url("../img/header-back.jpeg") no-repeat center;
+	background-size: cover;
+	height: 100vh;
 }
 
 #piano-container {
 	background: linear-gradient(0deg, rgb(0,0,0), rgb(64,64,64));
 	position: relative;
-	top: 80px;
+	top: 120px;
 	height: 300px;
 	width: 80%;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
 	border-radius: 15px;
+}
+
+nav {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	top: 50px;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	text-transform: uppercase;
+	color: #f0f0f0;
+	margin: 10px 20px;
+	font-size: 22px;
+	text-decoration: none;
+	display: block;
+	position: relative;
+}
+
+nav ul li a,
+nav ul li a:after {
+  transition: all .5s;
+}
+
+nav ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #f0f0f0;
+  height: 1px;
+}
+
+nav ul li a:hover:after {
+  width: 100%;
 }
 
 .keys {
@@ -76,10 +138,10 @@ h1 {
 
 #span-wrapper {
 	position: relative;
-	background: red;
+	background: transparent;
 	min-height: 100px;
 	width: 80%;
-	top: 100px;
+	top: 130px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
@@ -89,7 +151,7 @@ h1 {
 	position: absolute;
 	width: 100%;
 	height: 50%;
-	background: blue;
+	background: rgba(0, 0, 0, 0.8);
 	z-index: 10;
 
 	display: flex;
@@ -99,6 +161,19 @@ h1 {
 .single-letter {
 	flex: 1;
 	display: flex;
+	position: relative;
+}
+
+
+/* Progress-bar class */
+.single-letter-follow {
+	flex: 1;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #d80073;
+	height: 100%;
 }
 
 .single-letter p {
@@ -112,6 +187,6 @@ h1 {
 	width: 100%;
 	height: 50%;
 	top: 50%;
-	background: yellow;
+	background: transparent;
 	z-index: 10;
 }

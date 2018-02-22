@@ -4,20 +4,32 @@
 	<title>Keyboard</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-	<h1>Virtual piano</h1>
-	<div id="piano-container">
-		<div class="keys" id="whites">
+	<div id="outer-wrapper">
+		<div id="header-wrapper">
+			<nav class="stroke">
+				<ul>
+					<li><a href="#">main</a></li>
+					<li><a href="#">select song</a></li>
+					<li><a href="#">contact</a></li>
+				</ul>
+			</nav>
+
+			<div id="piano-container">
+				<div class="keys" id="whites">
+				</div>
+				<div class="keys" id="black">
+				</div>
+			</div>
+			<div id="span-wrapper">
+				<div class="spans" id="black">
+				</div>
+				<div class="spans" id="white"></div>
+			</div>
 		</div>
-		<div class="keys" id="black">
-		</div>
-	</div>
-	<div id="span-wrapper">
-		<div class="spans" id="black">
-		</div>
-		<div class="spans" id="white"></div>
 	</div>
 	<script src="dist/bundle.js"></script>
 </body>
