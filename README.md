@@ -24,6 +24,6 @@ then:
 
 App runs default on port 3003. Open browser and type:
 
-```https://localhost.3003``` 
+```https://localhost:3003``` 
 
 Enjoy:)
