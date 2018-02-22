@@ -1,7 +1,7 @@
 import PianoBuilder from './PianoBuilder.js';
 import {initStyleAdding,} from './script.js';
 import {addClickEvents} from './audio.js';
-import {silentNight, hallelujah, titanic} from './Data.js';
+import {silentNight, hallelujah, titanic, nothingElseMatters} from './Data.js';
 import {translateSong} from './translator.js';
 import {injectSong, playerFun, setSong} from './keysDownHandle.js';
 import Song from './Song.js'
@@ -17,16 +17,23 @@ $(document).ready(function() {
     let noSongMode = true;
     playerFun(piano);
     initprogress();
+    addScroll();
 });
 
 function initprogress(){
-    let song = titanic;
-
+    let song = silentNight;
     let songobj = new Song(song);
     setSong(songobj);
+}
 
-
-    console.log(songobj.songArray);
-
-    console.log(songobj.translatedArray);
+function addScroll() {
+    $("#menu-items").click(function(e) {
+        e.preventDefault();
+        let elem = e.target.href;
+        console.log(elem);
+        $("#songs-wrapper").addClass('transition');
+        $('html, body').animate({
+            scrollTop: $("#songs-wrapper").offset().top
+        }, 500);
+    })
 }

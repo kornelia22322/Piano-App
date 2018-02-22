@@ -296,6 +296,8 @@ function addClickEvents(piano) {
     var _loop = function _loop(i) {
         if (piano.keyArray[i] != undefined) {
             $(piano.keyArray[i].stringPattern).on("click", function () {
+
+                console.log(piano.keyArray[i]);
                 getData(piano.keyArray[i].URL, context);
             });
         }
@@ -342,11 +344,12 @@ exports.translateSong = translateSong;
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var KeysTranslator = (_KeysTranslator = { 17: 16, 20: 18, 27: 20, 49: 21, 65: 23, 18: 25, 88: 27,
-    87: 28, 51: 30, 68: 32, 67: 33, 86: 35, 82: 37, 53: 39,
+    87: 28, 51: 30, 68: "d", 67: "c", 86: "v", 82: 37, 53: "RA",
     84: "t", 66: "b", 72: "h", 89: "y", 55: "7", 74: "j", 188: "<",
     75: "k", 56: "8", 79: "o", 76: "l", 191: 59, 80: "p", 189: "-",
-    219: 64, 16: "b", 221: 68, 187: 69, 13: 71, 38: 73, 37: 75,
-    35: 76 }, _defineProperty(_KeysTranslator, "16", 17), _defineProperty(_KeysTranslator, 192, 19), _defineProperty(_KeysTranslator, 81, 22), _defineProperty(_KeysTranslator, 90, 24), _defineProperty(_KeysTranslator, 83, 26), _defineProperty(_KeysTranslator, 50, 29), _defineProperty(_KeysTranslator, 69, 31), _defineProperty(_KeysTranslator, 32, 34), _defineProperty(_KeysTranslator, 70, 36), _defineProperty(_KeysTranslator, 52, 38), _defineProperty(_KeysTranslator, 71, 41), _defineProperty(_KeysTranslator, 78, 43), _defineProperty(_KeysTranslator, 54, 46), _defineProperty(_KeysTranslator, 85, 48), _defineProperty(_KeysTranslator, 77, 50), _defineProperty(_KeysTranslator, 73, "i"), _defineProperty(_KeysTranslator, 57, "9"), _defineProperty(_KeysTranslator, 190, ">"), _defineProperty(_KeysTranslator, 186, ":"), _defineProperty(_KeysTranslator, 48, 62), _defineProperty(_KeysTranslator, 222, 65), _defineProperty(_KeysTranslator, 220, 67), _defineProperty(_KeysTranslator, 8, 70), _defineProperty(_KeysTranslator, 40, 72), _defineProperty(_KeysTranslator, 46, 74), _KeysTranslator);
+    219: 64, 16: "b", 221: "}", 187: 69, 13: 71, 38: 73, 37: 75,
+    35: 76 }, _defineProperty(_KeysTranslator, "16", 17), _defineProperty(_KeysTranslator, 192, 19), _defineProperty(_KeysTranslator, 81, 22), _defineProperty(_KeysTranslator, 90, 24), _defineProperty(_KeysTranslator, 83, 26), _defineProperty(_KeysTranslator, 50, 29), _defineProperty(_KeysTranslator, 69, 31), _defineProperty(_KeysTranslator, 32, 34), _defineProperty(_KeysTranslator, 70, 36), _defineProperty(_KeysTranslator, 52, "UA"), _defineProperty(_KeysTranslator, 71, 41), _defineProperty(_KeysTranslator, 78, 43), _defineProperty(_KeysTranslator, 54, 46), _defineProperty(_KeysTranslator, 85, 48), _defineProperty(_KeysTranslator, 77, 50), _defineProperty(_KeysTranslator, 73, "i"), _defineProperty(_KeysTranslator, 57, "9"), _defineProperty(_KeysTranslator, 190, ">"), _defineProperty(_KeysTranslator, 186, ":"), _defineProperty(_KeysTranslator, 48, 62), _defineProperty(_KeysTranslator, 222, 65), _defineProperty(_KeysTranslator, 220, "BS"), _defineProperty(_KeysTranslator, 8, 70), _defineProperty(_KeysTranslator, 40, 72), _defineProperty(_KeysTranslator, 46, 74), _KeysTranslator);
+//UA - up arrow
 
 function translateSong(song) {
     var array = [];
@@ -432,17 +435,25 @@ $(document).ready(function () {
     var noSongMode = true;
     (0, _keysDownHandle.playerFun)(piano);
     initprogress();
+    addScroll();
 });
 
 function initprogress() {
-    var song = _Data.titanic;
-
+    var song = _Data.silentNight;
     var songobj = new _Song2.default(song);
     (0, _keysDownHandle.setSong)(songobj);
+}
 
-    console.log(songobj.songArray);
-
-    console.log(songobj.translatedArray);
+function addScroll() {
+    $("#menu-items").click(function (e) {
+        e.preventDefault();
+        var elem = e.target.href;
+        console.log(elem);
+        $("#songs-wrapper").addClass('transition');
+        $('html, body').animate({
+            scrollTop: $("#songs-wrapper").offset().top
+        }, 500);
+    });
 }
 
 /***/ }),
@@ -502,6 +513,8 @@ var hallelujah = exports.hallelujah = [72, 55, 55, 55, 55, 74, 74, 74, 72, 55, 5
 
 var titanic = exports.titanic = [79, 190, 190, 186, 80, 186, 190, 79, 190, 189, 80, 186, 79, 73, 188];
 
+var nothingElseMatters = exports.nothingElseMatters = [68, 55, 188, 79, 188, 55, 68, 55, 188, 79, 188, 55];
+
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -548,6 +561,7 @@ function playerFun(piano) {
     $(document).keydown(function (e) {
         var val = piano.keyArray[e.keyCode];
         if (val != undefined) {
+            console.log(piano.keyArray[e.keyCode]);
             if (val.isWhite) {
                 (0, _script.changeWhiteKeyColor)(val.stringPattern);
             } else if (!val.isWhite) {

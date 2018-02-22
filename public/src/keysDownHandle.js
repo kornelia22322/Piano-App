@@ -27,6 +27,7 @@ export function playerFun(piano) {
     $(document).keydown((e) => {
         let val = piano.keyArray[e.keyCode];
         if (val != undefined) {
+            console.log(piano.keyArray[e.keyCode]);
             if(val.isWhite) {
                 changeWhiteKeyColor(val.stringPattern);
             } else if(!val.isWhite) {

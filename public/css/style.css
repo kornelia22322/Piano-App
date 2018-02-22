@@ -6,6 +6,8 @@
 body {
 	background-color: #F8F8F8;
 	font-family: 'Bellefair', serif;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 h1 {
@@ -30,10 +32,12 @@ p {
 	background: url("../img/header-back.jpeg") no-repeat center;
 	background-size: cover;
 	height: 100vh;
+	background-attachment: fixed;
 }
 
 #piano-container {
 	background: linear-gradient(0deg, rgb(0,0,0), rgb(64,64,64));
+	background-attachment: fixed;
 	position: relative;
 	top: 120px;
 	height: 300px;
@@ -49,6 +53,7 @@ nav {
 	width: 100%;
 	text-align: center;
 	top: 50px;
+	z-index: 20;
 }
 
 nav ul {
@@ -172,7 +177,7 @@ nav ul li a:hover:after {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #d80073;
+	background: #149691;
 	height: 100%;
 }
 
@@ -189,4 +194,38 @@ nav ul li a:hover:after {
 	top: 50%;
 	background: transparent;
 	z-index: 10;
+}
+
+#plain-color-1 {
+	background: #4F524E;
+	height: 100vh;
+	background-attachment: fixed;
+}
+
+#plain-color-2 {
+	background: #149691;
+	height: 100vh;
+}
+
+#songs-wrapper {
+	background: url("../img/song-back2.jpeg") no-repeat center;
+	background-size: cover;
+	height: 100vh;
+	background-attachment: fixed;
+}
+
+#songs-wrapper{
+ transition: all 20s;
+ -moz-transition: all 20s;
+ -webkit-transition: all 20s;
+ -o-transition: all 20s;
+ -ms-transition: all 20s;
+}
+
+.transition {
+transform : scale(1.25);
+-moz-transform : scale(1.25);
+-webkit-transform : scale(1.25);
+-o-transform : scale(1.25);
+-ms-transform : scale(1.25);
 }
