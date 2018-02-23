@@ -7,7 +7,6 @@ body {
 	background-color: #F8F8F8;
 	font-family: 'Bellefair', serif;
 	overflow-x: hidden;
-	overflow-y: hidden;
 }
 
 h1 {
@@ -33,6 +32,8 @@ p {
 	background-size: cover;
 	height: 100vh;
 	background-attachment: fixed;
+	min-height: 600px;
+	position: relative;
 }
 
 #piano-container {
@@ -141,12 +142,21 @@ nav ul li a:hover:after {
 	border-bottom-right-radius: 10px;
 }
 
+#instructions {
+	position: relative;
+	top: 130px;
+	height: 20px;
+	text-transform: uppercase;
+	text-weight: normal;
+	text-align: center;
+}
+
 #span-wrapper {
 	position: relative;
 	background: transparent;
 	min-height: 100px;
 	width: 80%;
-	top: 130px;
+	top: 140px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
@@ -187,13 +197,17 @@ nav ul li a:hover:after {
 	align-self: center;
 }
 
-.spans#white {
+.spans#glossary {
 	position: absolute;
 	width: 100%;
 	height: 50%;
 	top: 50%;
 	background: transparent;
 	z-index: 10;
+}
+
+.spans p {
+	text-align: center;
 }
 
 #plain-color-1 {
@@ -207,25 +221,70 @@ nav ul li a:hover:after {
 	height: 100vh;
 }
 
-#songs-wrapper {
+#songs-outer {
 	background: url("../img/song-back2.jpeg") no-repeat center;
 	background-size: cover;
 	height: 100vh;
+	height: 100vh;
 	background-attachment: fixed;
+	position: relative;
+	transition: all 20s;
+	-moz-transition: all 20s;
+	-webkit-transition: all 20s;
+	-o-transition: all 20s;
+	-ms-transition: all 20s;
 }
 
-#songs-wrapper{
- transition: all 20s;
- -moz-transition: all 20s;
- -webkit-transition: all 20s;
- -o-transition: all 20s;
- -ms-transition: all 20s;
-}
-
+/* Dynamic added transition class */
 .transition {
-transform : scale(1.25);
--moz-transform : scale(1.25);
--webkit-transform : scale(1.25);
--o-transform : scale(1.25);
--ms-transform : scale(1.25);
+	transform : scale(1.25);
+	-moz-transform : scale(1.25);
+	-webkit-transform : scale(1.25);
+	-o-transform : scale(1.25);
+	-ms-transform : scale(1.25);
+}
+
+#songs-inner {
+	position: relative;
+	top: -80vh;
+	width: 100%;
+	text-align: center;
+	height: 50px;
+}
+
+.single-song {
+	width: 50%;
+	height: 100%;
+	margin: 10px auto;
+	background: rgba(0,0,0,0.6);
+	border-radius: 25px;
+	z-index: 10;
+}
+
+#buttons-section {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 30px;
+}
+
+#buttons-wrapper {
+	display: inline-block;
+}
+
+.single-button {
+	height: 40px;
+	width: 100px;
+	background-color: #149691;
+	border-radius: 20px;
+	display: inline-block;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+.single-button p {
+	margin: 0;
+	padding: 0;
+	line-height: 40px;
+	text-transform: uppercase;
 }

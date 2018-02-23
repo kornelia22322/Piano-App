@@ -9,6 +9,8 @@
 </head>
 <body>
 	<div id="outer-wrapper">
+
+		<!--Header-->
 		<div id="header-wrapper">
 			<nav class="stroke">
 				<ul>
@@ -17,26 +19,45 @@
 					<li><a class="menu-items" href="#contact">contact</a></li>
 				</ul>
 			</nav>
-
 			<div id="piano-container">
-				<div class="keys" id="whites">
-				</div>
-				<div class="keys" id="black">
-				</div>
+				<div class="keys" id="whites"></div>
+				<div class="keys" id="black"></div>
+			</div>
+			<div id="instructions">
+				<p>Press those keys on your keyboard:</p>
 			</div>
 			<div id="span-wrapper">
-				<div class="spans" id="black">
+				<div class="spans" id="black"></div>
+				<div class="spans" id="glossary">
+					<p>Glossary: LC - Left Control, CLk - Caps Lock, Esc - Escape, LAlt - Left Alt, Ent - Right Enter, UA - Upper Arrow, DA - Down Arrow,
+						LA - Left Arrow, RA - Right Arrow, Spc - Space, BS - Backspace</p>
 				</div>
-				<div class="spans" id="white"></div>
+			</div>
+
+			<div id="buttons-section">
+				<div id="buttons-wrapper">
+					<div class="single-button" id="button-replay"><p>restart</p></div>
+					<div class="single-button" id="button-play"><p>play</p></div>
+				</div>
 			</div>
 		</div>
-		<div id = "plain-color-1">
 
+		<!--Separator section-->
+		<div id = "plain-color-1">
 		</div>
 		<div id = "plain-color-2">
-
 		</div>
-		<div id = "songs-wrapper">
+
+		<!--Songs choice-->
+
+		<!--Songs animate background-->
+		<div id = "songs-outer">
+		</div>
+
+		<!--Songs list - dynamically added-->
+		<div id = "songs-inner">
+			<div class="single-song" id="single-song"></div>
+			<div class="single-song" id="single-song2"></div>
 		</div>
 	</div>
 	<script src="dist/bundle.js"></script>

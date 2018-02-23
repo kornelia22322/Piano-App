@@ -1,10 +1,11 @@
 import PianoBuilder from './PianoBuilder.js';
 import {initStyleAdding,} from './script.js';
 import {addClickEvents} from './audio.js';
-import {silentNight, hallelujah, titanic, nothingElseMatters} from './Data.js';
+import {silentNight, titanic, nothingElseMatters, lalaLand, happyBirthday} from './Data.js';
 import {translateSong} from './translator.js';
-import {injectSong, playerFun, setSong} from './keysDownHandle.js';
+import {injectSong, keyboardHandle, setSong} from './keyboard.js';
 import Song from './Song.js'
+import {playButtonClick} from './buttons.js';
 
 $(document).ready(function() {
     //Builder design pattern
@@ -15,13 +16,14 @@ $(document).ready(function() {
     addClickEvents(piano);
 
     let noSongMode = true;
-    playerFun(piano);
+    keyboardHandle(piano);
     initprogress();
     addScroll();
+    playButtonClick(piano);
 });
 
 function initprogress(){
-    let song = silentNight;
+    let song = happyBirthday.dataset;
     let songobj = new Song(song);
     setSong(songobj);
 }
@@ -31,9 +33,9 @@ function addScroll() {
         e.preventDefault();
         let elem = e.target.href;
         console.log(elem);
-        $("#songs-wrapper").addClass('transition');
+        $("#songs-outer").addClass('transition');
         $('html, body').animate({
-            scrollTop: $("#songs-wrapper").offset().top
+            scrollTop: $("#songs-outer").offset().top
         }, 500);
     })
 }
