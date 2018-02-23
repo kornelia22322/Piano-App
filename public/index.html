@@ -14,9 +14,9 @@
 		<div id="header-wrapper">
 			<nav class="stroke">
 				<ul>
-					<li><a class="menu-items" href="">main</a></li>
-					<li><a id="menu-items" href="#songs-wrapper">select song</a></li>
-					<li><a class="menu-items" href="#contact">contact</a></li>
+					<li><a class="menu-items" href="#header-wrapper">main</a></li>
+					<li><a class="menu-items" href="#songs-outer-scrollto">select song</a></li>
+					<li><a class="menu-items" href="#contact-wrapper">contact</a></li>
 				</ul>
 			</nav>
 			<div id="piano-container">
@@ -24,7 +24,7 @@
 				<div class="keys" id="black"></div>
 			</div>
 			<div id="instructions">
-				<p>Press those keys on your keyboard:</p>
+				<p>I loaded example song for you to train. Press those keys on your keyboard: (or just click "Play" if you're a bit lazy)</p>
 			</div>
 			<div id="span-wrapper">
 				<div class="spans" id="black"></div>
@@ -54,10 +54,29 @@
 		<div id = "songs-outer">
 		</div>
 
+		<div id = "songs-outer-scrollto">
+		</div>
+
 		<!--Songs list - dynamically added-->
 		<div id = "songs-inner">
 			<div class="single-song" id="single-song"></div>
 			<div class="single-song" id="single-song2"></div>
+		</div>
+
+		<!--Contact page-->
+		<div id = "contact-wrapper">
+			<div id = "contact-inner-wrapper">
+				<div class="contact-box" id = "photo-div"><img src="../img/my2.jpeg"></div>
+				<div class="contact-box" id = "description-aside">
+					<h1>About the author</h1>
+					<p>I'm Kornelia Rohulko, 25-year-old from Cracow, Poland studying BSc. Computer Science at AGH University of Science and Technology
+					If you would like to help me develop this project (e.g. send some music sheet), don't hestitate and contact me:
+					<p><a href="mailto:korneliarohulko@gmail.com">korneliarohulko@gmail.com</a></p></p>
+					<h1>About app</h1>
+					<p>Piano key sounds were made by:</p>
+					<p><a href="https://www.youtube.com/channel/UCD5Cbv4qjUhGUc8EphN1BEg">Free High Quality Sound FX.</a></p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="dist/bundle.js"></script>

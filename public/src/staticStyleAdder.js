@@ -1,42 +1,43 @@
 import Piano from "./Piano.js"
 import PianoBuilder from "./PianoBuilder.js"
 
-
 export function initStyleAdding(pianoBuilder, piano) {
 	addDivs(pianoBuilder);
 	addMouseOverEvent(piano);
 }
 
 function addDivs(pianoBuilder) {
-	let templateforWhite = '';
-	let templateforBlack = '';
+	addWhiteDivs(pianoBuilder.mapWhiteKeys, 0, "#whites");
+	addBlackDivs(pianoBuilder.mapBlackKeys, 2.02777, "#black");
+}
+
+function addWhiteDivs(whiteKeysArray, left, divToAppend) {
+	let template = '';
 	let templateforWhiteSpan = '';
-
-	let leftforWhite = 0;
-	let leftforBlack = 2.02777;
-	let iteratorforBlack = 0;
-
-	for(let i in pianoBuilder.mapWhiteKeys) {
-		let val = Object.keys(pianoBuilder.mapWhiteKeys[i])[0];
-		templateforWhite += '<div class = "single-key-white" id = "key-white-' + val + '"></div>';
-		$('<style>#key-white-'+ val +'{ left:'+leftforWhite+'%;  }</style>').appendTo('head');
-		templateforWhiteSpan = '<div class = "single-span" id = "span-white-' + val + '></div>';
-		$('<style>#key-white-'+ val +'{ left:'+leftforWhite+'%;  }</style>').appendTo('head');
-		leftforWhite += 2.7777;
+	for(let i in whiteKeysArray) {
+		let val = Object.keys(whiteKeysArray[i])[0];
+		template += '<div class = "single-key-white" id = "key-white-' + val + '"></div>';
+		$('<style>#key-white-'+ val +'{ left:'+left+'%;  }</style>').appendTo('head');
+		left += 2.7777;
 	}
+	$(divToAppend).append(template);
+}
 
-	for(let i in pianoBuilder.mapBlackKeys) {
-		templateforBlack += '<div class = "single-key-black" id = "key-black-' + Object.keys(pianoBuilder.mapBlackKeys[i])[0] + '"></div>';
-		$('<style>#key-black-'+ Object.keys(pianoBuilder.mapBlackKeys[i])[0] +'{ left:'+leftforBlack+'%;  }</style>').appendTo('head');
-		if(iteratorforBlack%5 != 1 && iteratorforBlack%5 != 4) {
-			leftforBlack += 2.7777;
+function addBlackDivs(blackKeysArray, left, divToAppend) {
+	let template = '';
+	let iterator = 0;
+	for(let i in blackKeysArray) {
+		let val = Object.keys(blackKeysArray[i])[0];
+		template += '<div class = "single-key-black" id = "key-black-' + val + '"></div>';
+		$('<style>#key-black-'+ val +'{ left:'+left+'%;  }</style>').appendTo('head');
+		if(iterator%5 != 1 && iterator%5 != 4) {
+			left += 2.7777;
 		} else {
-			leftforBlack += 5.5554;
+			left += 5.5554;
 		}
-		iteratorforBlack++;
+		iterator++;
 	}
-	$("#whites").append(templateforWhite);
-	$("#black").append(templateforBlack);
+	$(divToAppend).append(template);
 }
 
 function addMouseOverEvent(piano){
@@ -44,7 +45,6 @@ function addMouseOverEvent(piano){
 		if(piano.keyArray[i] != undefined && piano.keyArray[i].isWhite) {
 			$(piano.keyArray[i].stringPattern).on({
 				"mouseover" : function() {
-					console.log(piano.keyArray[i].stringPattern);
 					changeWhiteKeyColor(piano.keyArray[i].stringPattern);
 	  			},
 				"mouseout" : function() {
@@ -54,7 +54,6 @@ function addMouseOverEvent(piano){
 		} else if(piano.keyArray[i] != undefined && !piano.keyArray[i].isWhite) {
 			$(piano.keyArray[i].stringPattern).on({
 				"mouseover": function() {
-					console.log(piano.keyArray[i].stringPattern);
 		      		changeBlackKeyColor(piano.keyArray[i].stringPattern);
 	  			},
 				"mouseout" : function() {

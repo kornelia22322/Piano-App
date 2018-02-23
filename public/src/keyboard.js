@@ -1,9 +1,18 @@
 import {changeWhiteKeyColor, changeBlackKeyColor,
-        getBackBlackKeyColor, getBackWhiteKeyColor} from './script.js';
+        getBackBlackKeyColor, getBackWhiteKeyColor} from './staticStyleAdder.js';
 import {context, getData} from './audio.js';
 import Song from './Song.js'
 
 let songToPlay = null;
+let timeoutsArray = [];
+
+export function clearTimeOutsArray() {
+    for (let i = 0; i < timeoutsArray.length; i++) {
+        console.log("I AM in clearTimeOutsArray");
+        clearTimeout(timeoutsArray[i]);
+    }
+    timeoutsArray = [];
+}
 
 export function setSong(song) {
     songToPlay = song;
@@ -16,6 +25,8 @@ export function keyboardHandle(piano) {
 }
 
 export function refreshInjection() {
+    songToPlay.setCount(0);
+    songToPlay.setPartCounter(0);
     injectSong();
 }
 
@@ -88,14 +99,27 @@ function colorDivsWidthVal(pattern) {
     }, 1);
 }
 
+/* key down, getData, progressBar
+and then key up trigger */
 export function playSongAutomatically(piano) {
     for(let i = 0; i < songToPlay.parts; i++) {
         for(let j = 0; j < songToPlay.buforSize; j++) {
-            let partCounter = songToPlay.actualPartCounter;
-            setTimeout(function() {
-                getData(piano.keyArray[songToPlay.songArray[(partCounter*songToPlay.partSize)+j]].URL, context);
+            timeoutsArray.push(setTimeout(function() {
+                let partCounter = songToPlay.actualPartCounter;
+
+                    console.log(partCounter);
+                let currentVal = piano.keyArray[songToPlay.songArray[(partCounter*songToPlay.partSize)+j]];
+                addTrigger(currentVal.stringPattern, "mouseover");
+                getData(currentVal.URL, context);
                 progressBar(songToPlay.songArray[(partCounter*songToPlay.partSize)+j]);
-            }, 500*j + (i*songToPlay.parts)*500);
+                setTimeout(function() {
+                    addTrigger(piano.keyArray[songToPlay.songArray[(partCounter*songToPlay.partSize)+j]].stringPattern, "mouseout");
+                }, 400);
+            }, 500*j + (i*songToPlay.buforSize)*500));
         }
     }
+}
+
+function addTrigger(element, e) {
+    $(element).trigger(e);
 }

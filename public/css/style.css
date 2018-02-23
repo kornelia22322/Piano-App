@@ -219,20 +219,33 @@ nav ul li a:hover:after {
 #plain-color-2 {
 	background: #149691;
 	height: 100vh;
+	background-attachment: fixed;
 }
 
 #songs-outer {
 	background: url("../img/song-back2.jpeg") no-repeat center;
 	background-size: cover;
 	height: 100vh;
-	height: 100vh;
 	background-attachment: fixed;
 	position: relative;
+	overflow: hidden;
 	transition: all 20s;
 	-moz-transition: all 20s;
 	-webkit-transition: all 20s;
 	-o-transition: all 20s;
 	-ms-transition: all 20s;
+	max-height: 800px;
+}
+
+/* background to transform section */
+#songs-outer-scrollto {
+	position: absolute;
+	height: 100vh;
+	top: 300vh;
+	z-index: -5;
+	background-color: #149691;
+	width: 100%;
+	left: 0;
 }
 
 /* Dynamic added transition class */
@@ -287,4 +300,56 @@ nav ul li a:hover:after {
 	padding: 0;
 	line-height: 40px;
 	text-transform: uppercase;
+}
+
+#contact-wrapper {
+	height: 100vh;
+	background:	#303030;
+}
+
+#contact-inner-wrapper {
+	top: 150px;
+	position: relative;
+	margin: 0 auto;
+	width: 60%;
+	height: 60%;
+}
+
+.contact-box {
+	position: absolute;
+}
+
+#description-aside {
+	left: 40%;
+	width: 40%;
+	z-index: 10;
+	height: 100%;
+	padding: 0 10%;
+	background-color: rgba(0,0,0,0.7);
+}
+
+#photo-div {
+	left: 0%;
+	width: 50%;
+	height: 100%;
+}
+
+#photo-div img {
+	max-height:100%;
+}
+
+#description-aside h1 {
+	top: 0;
+	color: #149691;
+}
+
+#description-aside p {
+	text-align: center;
+	padding: 3%;
+	font-size: 16px;
+}
+
+#description-aside a {
+	color: inherit !important;
+	text-decoration: none !important;
 }

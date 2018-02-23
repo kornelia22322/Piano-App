@@ -1,5 +1,5 @@
 import PianoBuilder from './PianoBuilder.js';
-import {initStyleAdding,} from './script.js';
+import {initStyleAdding,} from './staticStyleAdder.js';
 import {addClickEvents} from './audio.js';
 import {silentNight, titanic, nothingElseMatters, lalaLand, happyBirthday} from './Data.js';
 import {translateSong} from './translator.js';
@@ -23,19 +23,25 @@ $(document).ready(function() {
 });
 
 function initprogress(){
-    let song = happyBirthday.dataset;
+    let song = lalaLand.dataset;
     let songobj = new Song(song);
     setSong(songobj);
 }
 
 function addScroll() {
-    $("#menu-items").click(function(e) {
+    $(".menu-items").click(function(e) {
         e.preventDefault();
         let elem = e.target.href;
         console.log(elem);
-        $("#songs-outer").addClass('transition');
+        let href = $(this).attr("href").split("#");
+        let hrefSplit = href[1];
+        let offsetTop = $("#" + hrefSplit).offset().top;
+
+        if("#"+hrefSplit == "#songs-outer-scrollto") {
+            $("#songs-outer").addClass('transition');
+        }
         $('html, body').animate({
-            scrollTop: $("#songs-outer").offset().top
+            scrollTop: offsetTop
         }, 500);
     })
 }

@@ -24,6 +24,10 @@ export default class Song {
         this.calculateBuforSize();
     }
 
+    setPartCounter(partCounter) {
+        this.actualPartCounter = partCounter;
+    }
+
     setCount(count) {
         this.count = count;
     }
