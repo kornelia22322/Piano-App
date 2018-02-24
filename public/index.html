@@ -5,11 +5,11 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 	<div id="outer-wrapper">
-
 		<!--Header-->
 		<div id="header-wrapper">
 			<nav class="stroke">
@@ -36,8 +36,9 @@
 
 			<div id="buttons-section">
 				<div id="buttons-wrapper">
-					<div class="single-button" id="button-replay"><p>restart</p></div>
+					<div class="single-button" id="button-stop"><p>stop</p></div>
 					<div class="single-button" id="button-play"><p>play</p></div>
+					<div class="single-button" id="button-refresh"><p>refresh</p></div>
 				</div>
 			</div>
 		</div>
@@ -59,8 +60,6 @@
 
 		<!--Songs list - dynamically added-->
 		<div id = "songs-inner">
-			<div class="single-song" id="single-song"></div>
-			<div class="single-song" id="single-song2"></div>
 		</div>
 
 		<!--Contact page-->
@@ -78,6 +77,12 @@
 				</div>
 			</div>
 		</div>
+
+		<!--frame-->
+		<div class = "frame" id = "frame-left"></div>
+		<div class = "frame" id = "frame-right"></div>
+		<div class = "frame" id = "frame-top"></div>
+		<div class = "frame" id = "frame-bottom"></div>
 	</div>
 	<script src="dist/bundle.js"></script>
 </body>

@@ -8,7 +8,6 @@ let timeoutsArray = [];
 
 export function clearTimeOutsArray() {
     for (let i = 0; i < timeoutsArray.length; i++) {
-        console.log("I AM in clearTimeOutsArray");
         clearTimeout(timeoutsArray[i]);
     }
     timeoutsArray = [];
@@ -25,9 +24,21 @@ export function keyboardHandle(piano) {
 }
 
 export function refreshInjection() {
+    console.log(songToPlay);
     songToPlay.setCount(0);
     songToPlay.setPartCounter(0);
     injectSong();
+}
+
+export function addClickEvents(piano){
+    for(let i in piano.keyArray){
+        if(piano.keyArray[i]!=undefined) {
+            $(piano.keyArray[i].stringPattern).on("click", function() {
+                console.log(piano.keyArray[i]);
+                getData(piano.keyArray[i].URL, context);
+            });
+        }
+    }
 }
 
 function injectSong() {
@@ -106,15 +117,13 @@ export function playSongAutomatically(piano) {
         for(let j = 0; j < songToPlay.buforSize; j++) {
             timeoutsArray.push(setTimeout(function() {
                 let partCounter = songToPlay.actualPartCounter;
-
-                    console.log(partCounter);
                 let currentVal = piano.keyArray[songToPlay.songArray[(partCounter*songToPlay.partSize)+j]];
                 addTrigger(currentVal.stringPattern, "mouseover");
                 getData(currentVal.URL, context);
                 progressBar(songToPlay.songArray[(partCounter*songToPlay.partSize)+j]);
                 setTimeout(function() {
                     addTrigger(piano.keyArray[songToPlay.songArray[(partCounter*songToPlay.partSize)+j]].stringPattern, "mouseout");
-                }, 400);
+                }, 420);
             }, 500*j + (i*songToPlay.buforSize)*500));
         }
     }

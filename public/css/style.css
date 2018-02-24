@@ -4,9 +4,10 @@
 }
 
 body {
-	background-color: #F8F8F8;
+	background-color: #149691;
 	font-family: 'Bellefair', serif;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 h1 {
@@ -21,7 +22,7 @@ h1 {
 }
 
 p {
-	font-size: 18px;
+	font-size: 16px;
 	color: #FFF;
 	font-weight: bold;
 	z-index: 10;
@@ -40,8 +41,8 @@ p {
 	background: linear-gradient(0deg, rgb(0,0,0), rgb(64,64,64));
 	background-attachment: fixed;
 	position: relative;
-	top: 120px;
-	height: 300px;
+	top: 100px;
+	height: 45%;
 	width: 80%;
 	left: 0;
 	right: 0;
@@ -99,28 +100,19 @@ nav ul li a:hover:after {
 
 .keys {
 	position: absolute;
-	top: 120px;
+	top: 40%;
 	background-color: transparent;
 	width: 95%;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-}
-
-#whites {
-	z-index: 10;
-	height: 180px;
-}
-
-#black {
-	z-index: 20;
-	height: 120px;
+	height: 60%;
 }
 
 .single-key-white {
 	position: absolute;
 	z-index: 20;
-	height: 180px;
+	height: 100%;
 	width: 2.7777%;
 	border: solid;
 	border-color: black;
@@ -135,7 +127,7 @@ nav ul li a:hover:after {
 	position: absolute;
 	z-index: 30;
 	background-color: rgb(0,0,0);
-	height: 120px;
+	height: 70%;
 	width: 1.5%;
 	left: 2.0277%;
 	border-bottom-left-radius: 10px;
@@ -144,11 +136,13 @@ nav ul li a:hover:after {
 
 #instructions {
 	position: relative;
-	top: 130px;
+	top: 110px;
 	height: 20px;
 	text-transform: uppercase;
 	text-weight: normal;
 	text-align: center;
+	width: 80%;
+	margin: 0 auto;
 }
 
 #span-wrapper {
@@ -156,7 +150,7 @@ nav ul li a:hover:after {
 	background: transparent;
 	min-height: 100px;
 	width: 80%;
-	top: 140px;
+	top: 130px;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
@@ -168,15 +162,19 @@ nav ul li a:hover:after {
 	height: 50%;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 10;
-
 	display: flex;
 	justify-content: center;
 }
+
 
 .single-letter {
 	flex: 1;
 	display: flex;
 	position: relative;
+}
+
+.single-letter p {
+	font-size: 18px;
 }
 
 
@@ -262,23 +260,33 @@ nav ul li a:hover:after {
 	top: -80vh;
 	width: 100%;
 	text-align: center;
-	height: 50px;
+	height: 100%;
 }
 
 .single-song {
-	width: 50%;
-	height: 100%;
-	margin: 10px auto;
+	width: 60%;
+	height: 50px;
+	margin: 1% auto;
 	background: rgba(0,0,0,0.6);
 	border-radius: 25px;
 	z-index: 10;
+	text-align: center;
+	cursor: pointer;
+}
+
+.single-song:hover {
+	background: rgba(0,0,0,0.9);
+}
+
+.single-song p {
+	line-height: 50px;
 }
 
 #buttons-section {
 	position: absolute;
 	width: 100%;
 	text-align: center;
-	bottom: 30px;
+	bottom: 70px;
 }
 
 #buttons-wrapper {
@@ -352,4 +360,157 @@ nav ul li a:hover:after {
 #description-aside a {
 	color: inherit !important;
 	text-decoration: none !important;
+}
+
+
+/* Fixed frame */
+
+.frame {
+	position: fixed;
+	background-color: rgba(0,0,0,0.8);
+}
+
+#frame-top {
+	top: 0;
+	height: 15px;
+	width: 100%;
+}
+
+#frame-bottom {
+	bottom: 0;
+	height: 15px;
+	width: 100%;
+}
+
+#frame-left {
+	left: 0px;
+	top: 0px;
+	width: 15px;
+	height: 100%;
+}
+
+#frame-right {
+	right: 0px;
+	top: 0px;
+	width: 15px;
+	height: 100%;
+}
+
+#overlay {
+	height: 100vh;
+	background-color: rgba(0,0,0,0.8);
+	text-align: center;
+	position: fixed;
+}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	#piano-container {
+		top: 90px;
+		height:	35%;
+	}
+	p {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	h1 {
+		font-size: 18px;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	#piano-container {
+		top: 90px;
+		height:	30%;
+	}
+	#span-wrapper {
+		position: relative;
+		background: transparent;
+		min-height: 80px;
+		width: 80%;
+		top: 120px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+	p {
+		font-size: 12px;
+		font-weight: bold;
+	}
+	.single-letter p {
+		font-size: 14px;
+	}
+	h1 {
+		font-size: 14px;
+	}
+	nav ul li a {
+		font-size: 18px;
+	}
+	#description-aside p {
+		text-align: center;
+		padding: 2%;
+		font-size: 12px;
+	}
+}
+
+/* Landscape phones and down */
+@media (max-width: 580px) {
+	#piano-container {
+		top: 90px;
+		height:	20%;
+	}
+	nav ul li a {
+		margin: 2px 5px;
+		font-size: 14px;
+	}
+	#span-wrapper {
+		position: relative;
+		background: transparent;
+		min-height: 40px;
+		width: 80%;
+		top: 150px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+	p {
+		font-size: 10px;
+	}
+	.single-letter p {
+		font-size: 10px;
+	}
+	h1 {
+		font-size: 10px;
+	}
+
+	.single-button {
+		height: 20px;
+		width: 50px;
+		border-radius: 10px;
+		margin: 0 5px;
+	}
+
+	.single-button p {
+		line-height: 20px;
+	}
+
+	#description-aside {
+		left: 0%;
+		width: 60%;
+		padding: 0 1%;
+	}
+
+	#description-aside p {
+		text-align: center;
+		font-size: 8px
+	}
+
+	#contact-inner-wrapper {
+		top: 150px;
+		position: relative;
+		height: 30%;
+	}
+
 }
