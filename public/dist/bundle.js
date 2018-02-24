@@ -604,12 +604,7 @@ var _scroll = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-$(window).load(function () {
-    $('#overlay').fadeOut();
-    initializer();
-});
-
-function initializer() {
+$(document).ready(function () {
     //Builder design pattern
     var pianoBuilder = new _PianoBuilder2.default();
     var piano = pianoBuilder.build();
@@ -622,7 +617,7 @@ function initializer() {
     (0, _buttons.playButtonClick)(piano);
     (0, _buttons.stopButtonClick)();
     (0, _songsProvider.loadSongsIntoDivs)();
-};
+});
 
 function loadExampleSong() {
     var song = _Data.songsRawData[0].dataset;
@@ -649,7 +644,7 @@ var SingleKey = function () {
     function SingleKey(keyboardEventId, mp3Id, isWhite) {
         _classCallCheck(this, SingleKey);
 
-        var URL = 'http://localhost:3003/music?id=a';
+        var URL = 'https://virtual-piano-app.herokuapp.com/music?id=a';
         this.keyboardEventId = keyboardEventId;
         this.mp3Id = mp3Id;
         this.isWhite = isWhite;
