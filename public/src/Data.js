@@ -18,7 +18,7 @@ const lalaLand = {name: "La la land - movie theme", dataset: [73, 190, 186, 80, 
     189, 40, 8, 187, 39, 222, 189, 40, 8, 187, 39, 222, 189, 80, 190, 79, 190, 186, 190, 186, 80, 190, 186, 190, 186, 80,
     190, 186, 190, 186, 80, 190, 222]};
 
-const happyBirthday = {id: 5, name: "Happy Birthday", dataset: [191, 191, 80, 191, 219, 189, 191, 191, 80, 191, 39, 219,
+const happyBirthday = {name: "Happy Birthday", dataset: [191, 191, 80, 191, 219, 189, 191, 191, 80, 191, 39, 219,
     191, 191, 13, 221, 219, 189, 80, 187, 187, 221, 219, 39, 219]};
 
 //first one in array is the default loaded song

@@ -532,7 +532,7 @@ var nothingElseMatters = { name: "Metalica - Nothing Else Matters", dataset: [27
 
 var lalaLand = { name: "La la land - movie theme", dataset: [73, 190, 186, 80, 186, 190, 56, 56, 190, 186, 80, 186, 190, 57, 57, 190, 186, 80, 186, 190, 56, 189, 80, 186, 80, 186, 190, 73, 222, 8, 40, 38, 40, 8, 39, 39, 8, 40, 38, 40, 8, 222, 222, 8, 40, 38, 40, 8, 39, 37, 38, 40, 38, 40, 8, 222, 39, 222, 189, 222, 189, 80, 190, 186, 222, 189, 80, 189, 80, 186, 190, 39, 222, 189, 222, 189, 80, 190, 39, 222, 189, 222, 189, 80, 190, 186, 222, 72, 89, 190, 80, 222, 8, 221, 39, 221, 39, 222, 189, 40, 8, 187, 39, 222, 189, 40, 8, 187, 39, 222, 189, 80, 190, 79, 190, 186, 190, 186, 80, 190, 186, 190, 186, 80, 190, 186, 190, 186, 80, 190, 222] };
 
-var happyBirthday = { id: 5, name: "Happy Birthday", dataset: [191, 191, 80, 191, 219, 189, 191, 191, 80, 191, 39, 219, 191, 191, 13, 221, 219, 189, 80, 187, 187, 221, 219, 39, 219] };
+var happyBirthday = { name: "Happy Birthday", dataset: [191, 191, 80, 191, 219, 189, 191, 191, 80, 191, 39, 219, 191, 191, 13, 221, 219, 189, 80, 187, 187, 221, 219, 39, 219] };
 
 //first one in array is the default loaded song
 var songsRawData = exports.songsRawData = [happyBirthday, silentNight, titanic, lalaLand, nothingElseMatters];
@@ -772,9 +772,17 @@ function addEventListenerToDiv(i) {
         }
         Promise.all([(0, _keyboard.clearTimeOutsArray)()]).then(function () {
             (0, _keyboard.setSong)(songsObjArray[val]);
+            loadSongTitle("#instructions", _Data.songsRawData[val]);
             $('html, body').animate({ scrollTop: 0 }, 500);
         });
     });
+}
+
+function loadSongTitle(place, song) {
+    console.log("I am here");
+    console.log(song);
+    $(place).html('');
+    $(place).html("<p>" + song.name + "</p>");
 }
 
 /***/ }),

@@ -23,7 +23,15 @@ function addEventListenerToDiv(i) {
         }
         Promise.all([clearTimeOutsArray()]).then(() => {
             setSong(songsObjArray[val]);
+            loadSongTitle("#instructions", songsRawData[val]);
             $('html, body').animate({scrollTop:0}, 500);
         });
     });
+}
+
+function loadSongTitle(place, song) {
+    console.log("I am here");
+    console.log(song);
+    $(place).html('');
+    $(place).html("<p>" + song.name + "</p>");
 }
