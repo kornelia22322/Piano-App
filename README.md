@@ -1,29 +1,10 @@
 # Piano-App
 
-Would You like to play some of your favourite songs on virtual piano? I bet you do. Simply clone the repository:
+Would You like to play some of your favourite songs on virtual piano? I bet you do.
 
-```git clone https://github.com/korneliarohulko/Piano-App.git```
+See this app on: https://virtual-piano-app.herokuapp.com/
 
-Make sure you have node.js installed:
+REST virtual-piano-app entirely made with pure JavaScript - frond-end and back-end (node.js/Express) side - ES6 syntax for better code modularity. 
+Translated and bundled with Babel/Webpack. 
 
-```node -v```
-
-In case you don't visit official page and download: [node.js official page](https://nodejs.org/en/)
-
-Visit the folder
-
-```cd Piano-App```
-
-Type:
-
-```npm install```
-
-then:
-
-```node app```
-
-App runs default on port 3003. Open browser and type:
-
-```https://localhost:3003``` 
-
-Enjoy:)
+.mp3 origin files thanks to [Free High Quality Sound FX](https://www.youtube.com/channel/UCD5Cbv4qjUhGUc8EphN1BEg)
