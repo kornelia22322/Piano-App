@@ -8,7 +8,7 @@ import {playButtonClick, stopButtonClick} from './buttons.js';
 import {loadSongsIntoDivs} from './songsProvider.js';
 import {addScroll} from './scroll.js';
 
-$(document).ready(function() {
+console.log("HELLO");
     //Builder design pattern
     let pianoBuilder = new PianoBuilder();
     const piano = pianoBuilder.build();
@@ -21,7 +21,6 @@ $(document).ready(function() {
     playButtonClick(piano);
     stopButtonClick();
     loadSongsIntoDivs();
-});
 
 function loadExampleSong(){
     let song = songsRawData[0].dataset;

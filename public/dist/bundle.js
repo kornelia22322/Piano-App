@@ -550,9 +550,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.translateSong = translateSong;
 var KeysTranslator = { 17: "LC", 20: "CLk", 27: "Esc", 49: "1", 65: "a", 18: "LAlt", 88: "x",
     87: "w", 51: "3", 68: "d", 67: "c", 86: "v", 82: "r", 53: "5",
-    84: "t", 66: "b", 72: "h", 89: "y", 55: "7", 74: "j", 188: "<",
+    84: "t", 66: "b", 72: "h", 89: "y", 55: "7", 74: "j", 188: ",",
     75: "k", 56: "8", 79: "o", 76: "l", 191: "/", 80: "p", 189: "-",
-    219: "{", 16: "b", 221: "}", 187: "+", 13: "Ent", 38: "UA", 37: "LA",
+    219: "{", 16: "b", 221: "}", 187: "=", 13: "Ent", 38: "UA", 37: "LA",
     35: "End", 39: "RA", 192: "~",
     81: "q", 90: "z", 83: "s",
     50: "2", 69: "e",
@@ -560,10 +560,9 @@ var KeysTranslator = { 17: "LC", 20: "CLk", 27: "Esc", 49: "1", 65: "a", 18: "LA
     71: "g", 78: "n",
     54: "6", 85: "u", 77: "m",
     73: "i", 57: "9",
-    190: ">", 186: ":", 48: "0",
+    190: ".", 186: ":", 48: "0",
     222: "\"", 220: "\\",
     8: "BS", 40: "DA", 46: "Del" };
-//UA - up arrow
 
 function translateSong(song) {
     var array = [];
@@ -604,20 +603,19 @@ var _scroll = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-$(document).ready(function () {
-    //Builder design pattern
-    var pianoBuilder = new _PianoBuilder2.default();
-    var piano = pianoBuilder.build();
+console.log("HELLO");
+//Builder design pattern
+var pianoBuilder = new _PianoBuilder2.default();
+var piano = pianoBuilder.build();
 
-    (0, _staticStyleAdder.initStyleAdding)(pianoBuilder, piano);
-    (0, _keyboard.addClickEvents)(piano);
-    (0, _keyboard.keyboardHandle)(piano);
-    loadExampleSong();
-    (0, _scroll.addScroll)();
-    (0, _buttons.playButtonClick)(piano);
-    (0, _buttons.stopButtonClick)();
-    (0, _songsProvider.loadSongsIntoDivs)();
-});
+(0, _staticStyleAdder.initStyleAdding)(pianoBuilder, piano);
+(0, _keyboard.addClickEvents)(piano);
+(0, _keyboard.keyboardHandle)(piano);
+loadExampleSong();
+(0, _scroll.addScroll)();
+(0, _buttons.playButtonClick)(piano);
+(0, _buttons.stopButtonClick)();
+(0, _songsProvider.loadSongsIntoDivs)();
 
 function loadExampleSong() {
     var song = _Data.songsRawData[0].dataset;
