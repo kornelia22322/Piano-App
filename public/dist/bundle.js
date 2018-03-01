@@ -114,6 +114,7 @@ function refreshInjection() {
     console.log(songToPlay);
     songToPlay.setCount(0);
     songToPlay.setPartCounter(0);
+    songToPlay.refreshBuforSize();
     injectSong();
 }
 
@@ -281,6 +282,11 @@ var Song = function () {
         key: 'setCount',
         value: function setCount(count) {
             this.count = count;
+        }
+    }, {
+        key: 'refreshBuforSize',
+        value: function refreshBuforSize() {
+            this.buforSize = Math.min(this.songArray.length, this.partSize);
         }
     }, {
         key: 'calculateBuforSize',

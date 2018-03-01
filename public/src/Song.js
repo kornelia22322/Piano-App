@@ -32,6 +32,10 @@ export default class Song {
         this.count = count;
     }
 
+    refreshBuforSize() {
+        this.buforSize = Math.min(this.songArray.length, this.partSize);
+    }
+
     calculateBuforSize() {
         this.buforSize = Math.min(this.songArray.length - (this.actualPartCounter*this.partSize), this.partSize);
     }

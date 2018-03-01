@@ -27,6 +27,7 @@ export function refreshInjection() {
     console.log(songToPlay);
     songToPlay.setCount(0);
     songToPlay.setPartCounter(0);
+    songToPlay.refreshBuforSize();
     injectSong();
 }
 
