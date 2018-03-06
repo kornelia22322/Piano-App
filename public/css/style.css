@@ -286,7 +286,7 @@ nav ul li a:hover:after {
 	position: absolute;
 	width: 100%;
 	text-align: center;
-	bottom: 60px;
+	bottom: 40px;
 }
 
 #buttons-wrapper {
